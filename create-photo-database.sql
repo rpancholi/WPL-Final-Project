@@ -27,8 +27,21 @@ DROP TABLE IF EXISTS Photo;
 CREATE TABLE photo (
   username      VARCHAR(30) NOT NULL, 
   id			int not null,
+  event_name	VARCHAR(30) NOT NULL,
+  event_date	DATE NOT NULL,
+  selected		BOOLEAN NOT NULL,
   CONSTRAINT pk_photo PRIMARY KEY (id),
   Constraint fk_photo_customer FOREIGN KEY (username) references Customer(username)
+);
+
+DROP TABLE IF EXISTS Purchase_summary;
+CREATE TABLE Purchase_summary (
+  username      VARCHAR(30) NOT NULL, 
+  purchase_id	int not null AUTO_INCREMENT,
+  description	VARCHAR(30) NOT NULL,
+  purchase_date	DATE NOT NULL,
+  CONSTRAINT pk_purchase PRIMARY KEY (purchase_id),
+  Constraint fk_purchase_customer FOREIGN KEY (username) references Customer(username)
 );
 
 -- Insert statements test
@@ -37,10 +50,12 @@ INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com');
 INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com');
 INSERT INTO customer VALUES ('Fred','p4','fred@gmail.com');
 
-INSERT INTO photo VALUES ('Tom',1);
-INSERT INTO photo VALUES ('Tom',5);
-INSERT INTO photo VALUES ('Tom',6);
-INSERT INTO photo VALUES ('Tom',7);
-INSERT INTO photo VALUES ('Bill',2);
-INSERT INTO photo VALUES ('Jerry',3);
-INSERT INTO photo VALUES ('Fred',4);
+INSERT INTO photo VALUES ('Tom',1,"Birthday","2001/04/10",false);
+INSERT INTO photo VALUES ('Tom',5,"Company Party","2002/06/22",false);
+INSERT INTO photo VALUES ('Tom',6,"Dance","2002/06/22",false);
+INSERT INTO photo VALUES ('Tom',7,"Food Competition","2002/06/22",false);
+INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false);
+INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false);
+INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false);
+
+INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom', 'A4, Gold Frame, No Backing', '2002/06/22');
