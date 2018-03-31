@@ -1,6 +1,14 @@
 <?php
 //Author: Solon Pitts
 session_start();
+
+// Database Connection Variables
+$host = "localhost";
+$port = 3306;
+$user = "Solon"; 
+$password = "speakeasy";
+$db = "event_photo";
+
 // define variables and set to empty values
 $username = $password = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -14,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else //all fields non-empty
 	{
-		$con=mysqli_connect("localhost","Solon","speakeasy","event_photo");
+		$con=mysqli_connect($host,$user,$password,$password);
 		if (!$con) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
