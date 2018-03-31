@@ -1,0 +1,24 @@
+login(mostly done) 
+-form validation
+
+signup
+-form validation
+-password strength
+
+photos page
+-date, event name added to photo table
+-search/filter by name/date
+-favorites/selected, save in DB
+
+services page
+-print options(sizes.backing.framing), different prices 
+-search/filter by any
+-shopping cart
+-choose favorites list to print??
+-add purchase summary to DB
+
+purchase history page
+
+admin add/remove/update/delete
+
+front end
