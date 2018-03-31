@@ -1,0 +1,38 @@
+<?php
+//Author: Solon Pitts
+session_start();
+// define variables and set to empty values
+$username = $password = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+	$username = htmlspecialchars($_POST["username"]);
+	$password = htmlspecialchars($_POST["password"]);
+	
+	if(empty($username) || empty($password)){ //if any of the fields are empty, go back
+		header('Location: login.html');
+		exit();
+	}
+	else //all fields non-empty
+	{
+		$con=mysqli_connect("localhost","Solon","speakeasy","event_photo");
+		if (!$con) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+		
+		$query = "SELECT username, password FROM customer WHERE username = '$username';";
+		$result = mysqli_query ($con,$query);
+		if($userData = mysqli_fetch_array($result)){
+			if($password == $userData['password'])
+			{
+				session_regenerate_id(); 
+				$_SESSION['sess_username'] = $username;
+				session_write_close();
+				header('Location: welcome.php');
+				exit();
+			}
+		}
+		header('Location: login.html');
+		exit();
+	}
+}
+?>
