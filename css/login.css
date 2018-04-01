@@ -17,10 +17,10 @@
 	content: ' ';
 	z-index: -1;
 	height: 100%; width: 100%;
-	background: url(https://pixabay.com/get/ea37b60e2ff0083ed1534705fb0938c9bd22ffd41cb3134493f0c371a2/wood-3271749_1920.jpg);
+	background: url(/resources/backgrounds/wood.jpg);
 	position: absolute; 
 	top: 0; left: 0;
-	filter: blur(10px);
+	filter: blur(7px);
   }
   
   h1,
