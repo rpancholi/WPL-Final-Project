@@ -17,7 +17,7 @@
 	content: ' ';
 	z-index: -1;
 	height: 100%; width: 100%;
-	background: url(/resources/backgrounds/wood.jpg);
+	background: url(../resources/backgrounds/wood.jpg);
 	position: absolute; 
 	top: 0; left: 0;
 	filter: blur(7px);
