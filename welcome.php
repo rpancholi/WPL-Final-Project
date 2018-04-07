@@ -6,7 +6,7 @@ session_start();
 $host = "localhost";
 $port = 3306;
 $user = "Solon"; 
-$password = "speakeasy";
+$pass = "speakeasy";
 $db = "event_photo";
 
 if(!isset($_SESSION['sess_username'])) {
@@ -14,7 +14,7 @@ if(!isset($_SESSION['sess_username'])) {
   exit();
 }
 
-$con=mysqli_connect($host,$user,$password,$password);
+$con=mysqli_connect($host,$user,$pass,$db);
 if (!$con) {
 	die("Connection failed: " . mysqli_connect_error());
 }

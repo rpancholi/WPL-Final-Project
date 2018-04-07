@@ -44,6 +44,16 @@ CREATE TABLE Purchase_summary (
   Constraint fk_purchase_customer FOREIGN KEY (username) references Customer(username)
 );
 
+DROP TABLE IF EXISTS service;
+CREATE TABLE service (
+  pic_size     VARCHAR(30) NOT NULL, 
+  id		int not null AUTO_INCREMENT,
+  pic_backing	VARCHAR(30) NOT NULL,
+  pic_frame	VARCHAR(30) NOT NULL,
+  CONSTRAINT pk_service PRIMARY KEY (id)
+);
+
+
 -- Insert statements test
 INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com');
 INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com');
@@ -59,3 +69,5 @@ INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false);
 INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false);
 
 INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom', 'A4, Gold Frame, No Backing', '2002/06/22');
+
+INSERT INTO service(pic_size,pic_backing,pic_frame) VALUES ('A4','Yes','Gold');

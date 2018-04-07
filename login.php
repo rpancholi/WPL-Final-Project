@@ -6,7 +6,7 @@ session_start();
 $host = "localhost";
 $port = 3306;
 $user = "Solon"; 
-$password = "speakeasy";
+$pass = "speakeasy";
 $db = "event_photo";
 
 // define variables and set to empty values
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else //all fields non-empty
 	{
-		$con=mysqli_connect($host,$user,$password,$password);
+		$con=mysqli_connect($host,$user,$pass,$db);
 		if (!$con) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
