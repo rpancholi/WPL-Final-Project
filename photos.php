@@ -71,15 +71,6 @@ $query_filter = "SELECT DISTINCT event_name FROM photo WHERE username = '$userna
 $filter_results = mysqli_query ($con,$query_filter);
 
 $photos = mysqli_query ($con,$query_photo);
-
-function select($id){
-	$query_select = "UPDATE photo WHERE id = $id SET selected = true;";
-	mysqli_query ($con,$query_select);
-}
-function deselect($id){
-	$query_deselect = "UPDATE photo WHERE id = $id SET selected = false;";
-	mysqli_query ($con,$query_deselect);
-}
 ?>
 <html>
   <head>
@@ -125,17 +116,29 @@ function deselect($id){
 				echo "<h3>Date: $photo_date</h3>";
 				$selected = $photo['selected'];
 				echo "<label for='$photo_id'>Select Photo:</label>";
+				//check if photo previously checked or not
+				if(isset($_POST['submit']) && isset($_POST[$photo_id]) && !$selected){
+					$query_select = "UPDATE photo SET selected = true WHERE id = $photo_id;";
+					mysqli_query ($con,$query_select);	
+					$selected=true;
+				}
+				else if(isset($_POST['submit']) && !isset($_POST[$photo_id]) && $selected){
+					$query_deselect = "UPDATE photo SET selected = false WHERE id = $photo_id;";
+					mysqli_query ($con,$query_deselect);
+					$selected=false;
+				}
+
 				if($selected)
-					echo "<input type='checkbox' name = '$photo_id' value = 'Select' checked>";
+					echo "<input type='checkbox' name = '$photo_id' value = 'select' checked>";
 				else
-					echo "<input type='checkbox' name = '$photo_id' value = 'Select'>";
+					echo "<input type='checkbox' name = '$photo_id' value = 'select'>";
 				echo "<br>";
 				echo "<img src = 'resources/$photo_id.png'/>";
 			}
 		}
 	?>
 	<div>
-		<label for="submit">Save the selected photos:</label>
+		<label for="submit">Save selection:</label>
 		<input type="submit" action="" name="submit" value="Submit">
 	</div>
 	<br>
