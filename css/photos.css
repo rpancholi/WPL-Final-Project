@@ -1,0 +1,105 @@
+h2 { 
+	font-weight: bold; 
+	text-align: center; 
+	background-color: grey; 
+	color: white;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin: 0px;
+	}
+
+h3 { 
+	background-color: grey; 
+	color: white;
+	margin: 0px;
+	}
+	
+label { 
+	font-weight: bold; 
+	background-color: grey; 
+	color: white;
+	margin: 0px;
+	}
+
+.black { 
+	font-weight: bold; 
+	background-color: white; 
+	color: black;
+	margin: 0px;
+	}
+	
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.column {
+	text-align: center;
+    float: left;
+    width: 200px;
+	margin: 10px;
+}
+
+.main {
+	margin-left: 210px;
+	margin-right: 210px;
+	border: 1px solid white;
+	border-left: 2px solid grey;
+	border-right: 2px solid grey;
+	margin-bottom: 0px;
+	background-color: white;
+}
+
+.photo{
+	border: 1px solid black;
+	margin: 10px;
+	height: 400px;
+	background-color: grey; 
+}
+
+aside {
+	float: right;
+    width: 200px;
+}
+
+img {
+	width: 250px;
+	float: left;
+	margin-right: 10px;
+}
+
+body{
+	margin: 0px;
+	background-color: #E8EEEC;
+}
+
+a{
+	text-decoration: none;
+}
+
+.form{
+	height: 20px;
+	margin-left:10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}

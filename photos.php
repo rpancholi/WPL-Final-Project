@@ -33,6 +33,7 @@ else{
 $page_min = $page_max-$page_length;
 $photo_count=0;
 
+//make sure someone is logged in
 if(!isset($_SESSION['sess_username'])) {
   header("location: login.html");
   exit();
@@ -75,18 +76,31 @@ $photos = mysqli_query ($con,$query_photo);
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/photos.css">
     <title>Photos</title>
   </head>
  
   <body>
-	<h1>Welcome, <?php echo $username; ?>.</h1>
-	<form class="search" action="" method="post" id="searchForm">
-		<div>
-			<label for="search">Search for event name or date:</label>
+	<a class="anchor" id="home"></a>
+	
+	<!--Nav Bar-->
+	<ul>
+		<li><a href="photos.php">Photos</a></li>
+		<li><a href="login.html">Sign out</a></li>
+	</ul>
+	
+	<!--Left column-->
+	<div class="column">
+	</div>
+	
+	<!--Main page-->
+	<form class="main" action="" method="post" id="searchForm">
+		<div class = "form">
+			<label for="search" class="black">Search for event name or date:</label>
 			<input type="text" id="search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>" autofocus/>
-		</div>
-		<div>
-			<label for="filter">Filter by Event:</label>
+			<input type="submit" name="searchButton" value="Search">
+			<aside>
+			<label for="filter" class="black">Filter by Event:</label>
 			<select id="filter" name="filter">
 				<option value=''></option>
 				<?php //Add filter options to the select box
@@ -99,16 +113,17 @@ $photos = mysqli_query ($con,$query_photo);
 				}
 				?>
 			</select>
-		</div>
-		<div>
-			<input type="submit" name="searchButton" value="Search">
+			</aside>
 		</div>
 	<h2>User Photos</h2>
+	
 	<?php //display the photos from the constructed query
 		while($photo = mysqli_fetch_array($photos)){
 			$photo_count++;
 			if($photo_count>$page_min && $photo_count <= $page_max){
+				echo"<div class='photo'>";
 				$photo_id = $photo['id'];
+				echo "<img src = 'resources/$photo_id.png'/>";
 				echo "<h3>ID: $photo_id.</h3>";
 				$photo_name = $photo['event_name'];
 				echo "<h3>Event Name: $photo_name</h3>";
@@ -127,18 +142,19 @@ $photos = mysqli_query ($con,$query_photo);
 					mysqli_query ($con,$query_deselect);
 					$selected=false;
 				}
-
+				//display checkbox as checked or not
 				if($selected)
 					echo "<input type='checkbox' name = '$photo_id' value = 'select' checked>";
 				else
 					echo "<input type='checkbox' name = '$photo_id' value = 'select'>";
 				echo "<br>";
-				echo "<img src = 'resources/$photo_id.png'/>";
+				
+				echo"</div>";
 			}
 		}
 	?>
-	<div>
-		<label for="submit">Save selection:</label>
+	<div class="form">
+		<label for="submit" class="black">Save selection:</label>
 		<input type="submit" action="" name="submit" value="Submit">
 	</div>
 	<br>
@@ -153,5 +169,9 @@ $photos = mysqli_query ($con,$query_photo);
 	</div>
 	<input type="hidden" id='page_num' name ="page_num" value=<?php echo "$page_num"; ?> />
 	</form>
+	<!--Bottom Bar-->
+	<ul>
+		<li><a href="#home">Back to top</a></li>
+	</ul>
    </body>
 </html>

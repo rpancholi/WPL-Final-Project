@@ -1,20 +1,20 @@
 login(mostly done) 
--form validation
+-form validation //done
 
 signup
--form validation
--password strength
+-form validation //done
+-password strength //done
 
 photos page
--date, event name added to photo table
--search/filter by name/date
--favorites/selected, save in DB
+-date, event name added to photo table //done
+-search/filter by name/date //done
+-favorites/selected, save in DB //done
 
 services page
 -print options(sizes.backing.framing), different prices 
 -search/filter by any
 -shopping cart
--choose favorites list to print??
+-choose favorites list to print?? //not doing favorites, just one set of selected photos
 -add purchase summary to DB
 
 purchase history page
