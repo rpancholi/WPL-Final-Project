@@ -1,0 +1,43 @@
+/* Fonts */
+/* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Slab', sans-serif;
+}
+
+.wrapper {
+    display: grid;    
+    grid-template-columns: 10vw auto 10vw; 
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 3px;
+    height: 100vh;
+    
+    grid-template-areas:
+    "h h h"
+    "c c c";
+}
+
+.header {
+    grid-area: h;
+	/* background: #78a1bb; */
+    filter: blur(0px);
+    border-radius: 0px 0px 0px 0px;
+}
+
+.content {
+    grid-area: c;
+	/* background: linear-gradient(#F0F8FF, #FFFFFF); */
+}
+
+.sectionBackground{
+	content: ' ';
+	z-index: -1;
+	height: 100%; width: 100%;
+	background: url(../resources/backgrounds/wood.jpg);
+	position: absolute; 
+	top: 0px; left: 0px;
+	filter: blur(7px);
+  }
