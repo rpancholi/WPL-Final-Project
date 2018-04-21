@@ -45,32 +45,55 @@ $mats_result = mysqli_query($con, $mats_sql)
     <div class="wrapper">
         <div class="header">
         </div>
+        <!-- <section class="section-background"></section> -->
         <div class="content">
             <section>
                 <h1>Photo Printing Services</h1>
             </section>
-            <section class="frame">
+            <section class="product-section-title">                
                 <h1>Frames</h1>
+            </section>
+            <section class="frame">
                 <?php
                     if($frames_result->num_rows == 0){
                         echo "SOMETHING WENT WRONG!";
                     }
                     while($row = mysqli_fetch_array($frames_result)){
+                        echo "<article class='product-image'>";
+                        echo "<figure>";
                         echo "<img src='resources/frames/".$row['image_file_name'].".jpg"."' alt='Frame Image' title='".$row['frame_name']."'>";
-                        echo $row['frame_name'];
+                        echo "<figcaption>";
+                        echo "<h1>".$row['frame_name']."</h1>";
+                        echo "<h1>"."$".$row['price']."</h1>";
+                        echo "</figcaption>";
+                        echo "</figure>";
+                        echo "</article>";
                     }
                 ?>
             </section>
-            <section class="mat">
+            <section class="product-section-title">                
                 <h1>Mats</h1>
+            </section>
+            <section class="mat">
                 <?php
                     if($mats_result->num_rows == 0){
                         echo "SOMETHING WENT WRONG!";
                     }
                     while($row = mysqli_fetch_array($mats_result)){
+                        echo "<article class='product-image'>";
+                        echo "<figure>";
                         echo "<img src='resources/mats/".$row['image_file_name'].".jpg"."' alt='Mat Image' title='".$row['mat_name']."'>";
+                        echo "<figcaption>";
+                        echo "<h1>".$row['mat_name']."</h1>";
+                        echo "<h1>"."$".$row['price']."</h1>";
+                        echo "</figcaption>";
+                        echo "</figure>";
+                        echo "</article>";
                     }
                 ?>
+            </section>
+            <section class="product-section-title">                
+                <h1>Size</h1>
             </section>
             <section class="size">
                 <?php ?>

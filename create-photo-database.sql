@@ -53,10 +53,12 @@ CREATE TABLE service (
   CONSTRAINT pk_service PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS frames;
 CREATE TABLE frames (
   frame_name      VARCHAR(30) NOT NULL, 
   id			int not null AUTO_INCREMENT,
-  image_file_name	VARCHAR(30) NOT NULL
+  image_file_name	VARCHAR(30) NOT NULL,
+  price DECIMAL(4,2) NOT NULL,
   CONSTRAINT pk_frame PRIMARY KEY (id)
 );
 
@@ -64,7 +66,8 @@ DROP TABLE IF EXISTS mats;
 CREATE TABLE mats (
   mat_name      VARCHAR(30) NOT NULL, 
   id			int not null AUTO_INCREMENT,
-  image_file_name	VARCHAR(30) NOT NULL
+  image_file_name	VARCHAR(30) NOT NULL,
+  price DECIMAL(4,2) NOT NULL,
   CONSTRAINT pk_mat PRIMARY KEY (id)
 );
 
@@ -90,21 +93,21 @@ INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom'
 
 INSERT INTO service(pic_size,pic_backing,pic_frame) VALUES ('A4','Yes','Gold');
 
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Decorated', 'black_rect_thick');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern', 'black_rect_thin');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern Showcase', 'black_sq_thin');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern Impact', 'black_sq_thin_2');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Bold Gold', 'gold_rect_thick');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Gold Modern', 'gold_rect_thin');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Classic White', 'white_rect_thick');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('White Filigree', 'white_round_thick');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('White Modern Showcase', 'white_sq_thick');
-INSERT INTO frames(frame_name, image_file_name) VALUES ('Simple Wood', 'wood_sq_thin');
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Decorated', 'black_rect_thick', "49.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern', 'black_rect_thin', "14.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern Showcase', 'black_sq_thin', "10.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern Impact', 'black_sq_thin_2', "10.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Bold Gold', 'gold_rect_thick', "39.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Gold Modern', 'gold_rect_thin', "29.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Classic White', 'white_rect_thick', "15.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('White Filigree', 'white_round_thick', "24.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('White Modern Showcase', 'white_sq_thick', "17.99");
+INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Simple Wood', 'wood_sq_thin', "9.99");
 
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Jet Black', 'black');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Royal Blue', 'blue');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Vintage Cream', 'cream');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Emerald Green', 'green');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Demure Grey', 'grey');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Vibrant Red', 'red');
-INSERT INTO mats(mat_name, image_file_name) VALUES ('Classic White', 'white');
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Jet Black', 'black', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Royal Blue', 'blue', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Vintage Cream', 'cream', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Emerald Green', 'green', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Demure Grey', 'grey', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Vibrant Red', 'red', "1.99");
+INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Classic White', 'white', "1.99");
