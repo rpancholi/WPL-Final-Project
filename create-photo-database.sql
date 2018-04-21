@@ -53,6 +53,20 @@ CREATE TABLE service (
   CONSTRAINT pk_service PRIMARY KEY (id)
 );
 
+CREATE TABLE frames (
+  frame_name      VARCHAR(30) NOT NULL, 
+  id			int not null AUTO_INCREMENT,
+  image_file_name	VARCHAR(30) NOT NULL
+  CONSTRAINT pk_frame PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS mats;
+CREATE TABLE mats (
+  mat_name      VARCHAR(30) NOT NULL, 
+  id			int not null AUTO_INCREMENT,
+  image_file_name	VARCHAR(30) NOT NULL
+  CONSTRAINT pk_mat PRIMARY KEY (id)
+);
 
 -- Insert statements test
 INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com');
@@ -75,3 +89,22 @@ INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false);
 INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom', 'A4, Gold Frame, No Backing', '2002/06/22');
 
 INSERT INTO service(pic_size,pic_backing,pic_frame) VALUES ('A4','Yes','Gold');
+
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Decorated', 'black_rect_thick');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern', 'black_rect_thin');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern Showcase', 'black_sq_thin');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Black Modern Impact', 'black_sq_thin_2');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Bold Gold', 'gold_rect_thick');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Gold Modern', 'gold_rect_thin');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Classic White', 'white_rect_thick');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('White Filigree', 'white_round_thick');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('White Modern Showcase', 'white_sq_thick');
+INSERT INTO frames(frame_name, image_file_name) VALUES ('Simple Wood', 'wood_sq_thin');
+
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Jet Black', 'black');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Royal Blue', 'blue');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Vintage Cream', 'cream');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Emerald Green', 'green');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Demure Grey', 'grey');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Vibrant Red', 'red');
+INSERT INTO mats(mat_name, image_file_name) VALUES ('Classic White', 'white');

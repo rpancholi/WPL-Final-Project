@@ -8,6 +8,10 @@ html, body {
     font-family: 'Roboto Slab', sans-serif;
 }
 
+h1 {
+    margin: 2px auto;
+}
+
 .wrapper {
     display: grid;    
     grid-template-columns: 10vw auto 10vw; 
@@ -40,4 +44,25 @@ html, body {
 	position: absolute; 
 	top: 0px; left: 0px;
 	filter: blur(7px);
-  }
+}
+
+.frame {    
+    /* Supports Grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 1em;
+}
+
+.mat {
+    /* Supports Grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: minmax(150px, auto);
+    grid-gap: 10em;
+}
+
+.mat > img{
+    margin-left: 5px;
+    margin-right: 5px;
+}
