@@ -71,6 +71,14 @@ CREATE TABLE mats (
   CONSTRAINT pk_mat PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS sizes;
+CREATE TABLE sizes (
+  size      VARCHAR(30) NOT NULL, 
+  dimensions	VARCHAR(30) NOT NULL,
+  price DECIMAL(4,2) NOT NULL,
+  CONSTRAINT pk_mat PRIMARY KEY (size)
+);
+
 -- Insert statements test
 INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com');
 INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com');
@@ -111,3 +119,8 @@ INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Emerald Green', 'gre
 INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Demure Grey', 'grey', "1.99");
 INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Vibrant Red', 'red', "1.99");
 INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Classic White', 'white', "1.99");
+
+INSERT INTO sizes(size, dimensions, price) VALUES ('A4', '210mm × 297mm', "9.99");
+INSERT INTO sizes(size, dimensions, price) VALUES ('A3', '297mm x 420mm', "11.99");
+INSERT INTO sizes(size, dimensions, price) VALUES ('A3+', '329mm x 483mm', "12.99");
+INSERT INTO sizes(size, dimensions, price) VALUES ('A2', '420mm x 594mm', "15.99");

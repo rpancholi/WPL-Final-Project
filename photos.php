@@ -94,7 +94,7 @@ $photos = mysqli_query ($con,$query_photo);
 	</div>
 	
 	<!--Main page-->
-	<form class="main" action="" method="post" id="searchForm">
+	<form class="main" action="services.php" method="post" id="searchForm">
 		<div class = "form">
 			<label for="search" class="black">Search for event name or date:</label>
 			<input type="text" id="search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>" autofocus/>
