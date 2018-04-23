@@ -46,38 +46,70 @@ $sizes_result = mysqli_query($con, $sizes_sql);
 </head>
 
 <script>
-    function babyNames() {
-        var year = document.getElementById("year").value;
-        var gender = document.getElementById("gender").value;
-        // document.getElementById("one").getAttribute('data-value')
+    var chosenFrame = null;
+    var framePrice = null;
+    var chosenMat = null;
+    var matPrice = null;
+    var chosenSize = null;
+    var sizePrice = null;
+    function selectFrame(frameID, frameName, price) {
+        chosenFrame = frameID;
+        var currentFrame = document.getElementById("currentFrame");
+        currentFrame.innerText = frameName;
+        framePrice = parseFloat(price);
+        costCalculator();
     }
-
-    function displayID(el)
-    {
-        alert(  el.value  );
+    function selectMat(matID, matName, price) {
+        chosenMat = matID;
+        var currentMat = document.getElementById("currentMat");
+        currentMat.innerText = matName;
+        matPrice = parseFloat(price);
+        costCalculator();
+    }
+    function selectSize() {
+        chosenSize = document.getElementById("sizeSelector").value;
+        var currentMat = document.getElementById("currentSize");
+        currentSize.innerText = chosenSize["size"];
+    }
+    function costCalculator(){
+        var currentPrice = document.getElementById("currentPrice");
+        var totalPrice = framePrice + matPrice;
+        currentPrice.innerText = "$" + totalPrice.toFixed(2);
     }
 </script>
 
 <body>
     <div class="wrapper">
+    <!-- <section class="section-background"></section> -->
         <!-- Navbar for site navigation -->
         <div class="header">
-        <div id="navbar">
-            <div class = "user-welcome">
-                <?php echo "Welcome ".ucfirst($_SESSION['sess_username'])."!" ?>
-            </div>
-            <div class = "navbar-item">
-                <a href=photos.php>Photos</a>
-            </div>
-            <div class = "navbar-item sign-out">
-                <a href=login.html>Sign Out</a>
+            <div id="navbar">
+                <div class = "user-welcome">
+                    <?php echo "Welcome ".ucfirst($_SESSION['sess_username'])."!" ?>
+                </div>
+                <div class = "navbar-item">
+                    <a href=photos.php>Photos</a>
+                </div>
+                <div class = "navbar-item sign-out">
+                    <a href=login.html>Sign Out</a>
+                </div>
             </div>
         </div>
+        <div class="banner">
+            <h1>Photo Framing Services</h1>
+            <h1>Frame your heart out</h1>
+            <h3>Choose your favorite frame and matting. We’ll custom cut, craft and build it from scratch.</h3>
         </div>
-        <section class="section-background"></section>
+        <div class="sidebar">
+            <h1>You've Selected:</h1>
+            <h3>Frame: <span id="currentFrame"></span> </h3>
+            <h3>Mat:  <span id="currentMat"></span> </h3>
+            <h3>Size: <span id="currentSize">A2</span> </h3>
+            <h4>Price: <span id="currentPrice"></span></h4>
+        </div>
         <div class="content">
             <section class="page-title">
-                <h1>Photo Printing Services</h1>
+                <!-- <h1>Photo Framing Services</h1> -->
             </section>
             <section class="product-section-title">                
                 <h1>Frames</h1>
@@ -90,8 +122,8 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     while($row = mysqli_fetch_array($frames_result)){
                         echo "<article class='product-image'>";
                         echo "<figure>";
-                        echo "<img src='resources/frames/".$row['image_file_name'].".jpg"."' alt='Frame Image' title='".$row['frame_name']."'"."data-value=".$row["id"].">";
-                        echo "<figcaption>";
+                        echo "<img src='resources/frames/".$row['image_file_name'].".jpg"."' alt='Frame Image' title='".$row['frame_name']."'"."data-id=".$row["id"].">";
+                        echo "<figcaption onclick=\"selectFrame(".'\''.$row['id'].'\''.",".'\''.$row['frame_name'].'\''.",".'\''.$row['price'].'\''.");\">";
                         echo "<h1>".$row['frame_name']."<br/>"."$".$row['price']."</h1>";
                         echo "</figcaption>";
                         echo "</figure>";
@@ -110,8 +142,8 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     while($row = mysqli_fetch_array($mats_result)){
                         echo "<article class='product-image'>";
                         echo "<figure>";
-                        echo "<img src='resources/mats/".$row['image_file_name'].".jpg"."' alt='Mat Image' title='".$row['mat_name']."'"."data-value=".$row["id"].">";
-                        echo "<figcaption>";
+                        echo "<img src='resources/mats/".$row['image_file_name'].".jpg"."' alt='Mat Image' title='".$row['mat_name']."'"."data-id=".$row["id"].">";
+                        echo "<figcaption onclick=\"selectMat(".'\''.$row['id'].'\''.",".'\''.$row['mat_name'].'\''.",".'\''.$row['price'].'\''.");\">";
                         echo "<h1>".$row['mat_name']."<br/>"."$".$row['price']."</h1>";
                         echo "</figcaption>";
                         echo "</figure>";
@@ -123,11 +155,11 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                 <h1>Size</h1>
             </section>
             <section class="size">
-                <select name="size">
+                <select name="size" id="sizeSelector" onchange="selectSize()">
                     <optgroup label = "Size | Dimension | Price">
                         <?php
                             while($row = mysqli_fetch_array($sizes_result)){
-                                echo "<option ". "value=".$row["size"].">".$row["size"]." | ".$row["dimensions"]." | "."$".$row["price"]."</option>";
+                                echo "<option ". "value="."\"{"."\'"."size"."\':".$row["size"]."}\"".">".$row["size"]." | ".$row["dimensions"]." | "."$".$row["price"]."</option>";
                             }
                         ?>
                     </optgroup>

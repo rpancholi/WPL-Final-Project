@@ -15,15 +15,21 @@ h1 {
     margin: 2px auto;
 }
 
+select {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 1.5em;
+}
+
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 300px;
     grid-template-rows: auto 1fr auto;
-    grid-gap: 3px;
+    grid-gap: 0px;
     /* height: 10em; */
     grid-template-areas: 
-    "h h h" 
-    "c c c";
+    "h h"
+    "b b" 
+    "c s";
 }
 
 .header {
@@ -31,6 +37,23 @@ h1 {
     /* background: #78a1bb; */
     filter: blur(0px);
     border-radius: 0px 0px 0px 0px;
+}
+
+.banner {
+    grid-area: b;
+    text-align: center;
+    background-color:rgb(127, 174, 249);
+    color: rgb(248, 243, 233);
+}
+
+.sidebar {
+    grid-area: s;
+    background: rgb(127,174,249);
+    background: linear-gradient(180deg, rgb(208, 226, 253) 0%, rgba(255,255,255,0) 100%);
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding-left: 10px;
+    margin-left: 30px;
 }
 
 .content {
@@ -43,7 +66,7 @@ h1 {
     z-index: -10;
     height: 100%;
     width: 100%;
-    /* background: url(../resources/backgrounds/wood.jpg); */
+    background: url(../resources/backgrounds/wood.jpg);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -55,6 +78,7 @@ h1 {
 
 #navbar {
     /* padding-left: 10vw; */
+    background-color: rgb(248, 243, 233);
 }
 
 #navbar div{
@@ -88,6 +112,10 @@ h1 {
     margin-right: 2em;
 }
 
+.sign-out:hover {
+    background: red;
+}
+
 .user-welcome {
     float: left;
 }
@@ -117,6 +145,10 @@ h1 {
     grid-auto-rows: minmax(200px, auto);
     grid-gap: 1em;
     padding-left: 2em;
+}
+
+.mat .product-image figure{
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .product-image figure{
@@ -219,5 +251,6 @@ figcaption:hover {
 /* SIZE SELECTOR ELEMENTS */
 .size {
     margin-left: 2em;
+    margin-bottom: 20px; 
 }
 /* SIZE SELECTOR ELEMENTS END */
