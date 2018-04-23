@@ -51,13 +51,15 @@ $sizes_result = mysqli_query($con, $sizes_sql);
     var chosenMat = null;
     var matPrice = null;
     var chosenSize = null;
-    var sizePrice = null;
+    var currentPrice = null;
+    var sizePrice = parseFloat(15.99);
     function selectFrame(frameID, frameName, price) {
         chosenFrame = frameID;
         var currentFrame = document.getElementById("currentFrame");
         currentFrame.innerText = frameName;
         framePrice = parseFloat(price);
         costCalculator();
+        enableSubmit();
     }
     function selectMat(matID, matName, price) {
         chosenMat = matID;
@@ -65,16 +67,31 @@ $sizes_result = mysqli_query($con, $sizes_sql);
         currentMat.innerText = matName;
         matPrice = parseFloat(price);
         costCalculator();
+        enableSubmit();
     }
     function selectSize() {
-        chosenSize = document.getElementById("sizeSelector").value;
-        var currentMat = document.getElementById("currentSize");
-        currentSize.innerText = chosenSize["size"];
+        chosenSize = document.getElementById("sizeSelector");
+        var currentSize = document.getElementById("currentSize");
+        var selectedPrice = chosenSize.options[chosenSize.selectedIndex];
+        currentSize.innerText = chosenSize.value;
+        sizePrice = parseFloat(selectedPrice.getAttribute('data-price'));
+        costCalculator();
     }
     function costCalculator(){
-        var currentPrice = document.getElementById("currentPrice");
-        var totalPrice = framePrice + matPrice;
+        var priceLabel = document.getElementById("pricePlaceholder");
+        priceLabel.style.visibility = "visible";
+        currentPrice = document.getElementById("currentPrice");
+        var totalPrice = framePrice + matPrice + sizePrice;
         currentPrice.innerText = "$" + totalPrice.toFixed(2);
+    }
+    function enableSubmit(){
+        if ((chosenFrame !== null) && (chosenMat !== null)){
+            var orderButton = document.getElementById("orderButton");
+            orderButton.style.visibility = "visible";
+        };
+    }
+    function submitOrder(){
+        alert(currentPrice.innerText);
     }
 </script>
 
@@ -102,10 +119,11 @@ $sizes_result = mysqli_query($con, $sizes_sql);
         </div>
         <div class="sidebar">
             <h1>You've Selected:</h1>
-            <h3>Frame: <span id="currentFrame"></span> </h3>
-            <h3>Mat:  <span id="currentMat"></span> </h3>
+            <h3>Frame: <span id="currentFrame">Select your frame!</span> </h3>
+            <h3>Mat:  <span id="currentMat">Select a mat!</span> </h3>
             <h3>Size: <span id="currentSize">A2</span> </h3>
-            <h4>Price: <span id="currentPrice"></span></h4>
+            <h4 id="pricePlaceholder">Price: <span id="currentPrice"></span></h4>
+            <button type="button" id="orderButton" onclick="submitOrder();">Submit!</button>
         </div>
         <div class="content">
             <section class="page-title">
@@ -159,7 +177,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     <optgroup label = "Size | Dimension | Price">
                         <?php
                             while($row = mysqli_fetch_array($sizes_result)){
-                                echo "<option ". "value="."\"{"."\'"."size"."\':".$row["size"]."}\"".">".$row["size"]." | ".$row["dimensions"]." | "."$".$row["price"]."</option>";
+                                echo "<option ". "value=".$row[size]." data-price=".'"'.$row[price].'"'.">".$row["size"]." | ".$row["dimensions"]." | "."$".$row["price"]."</option>";
                             }
                         ?>
                     </optgroup>
