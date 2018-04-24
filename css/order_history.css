@@ -1,4 +1,5 @@
 /* Author: Solon Pitts */
+/* Author: Solon Pitts */
 /* Fonts */
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat'); */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
@@ -18,7 +19,7 @@ body {
 }
 
 h1 {
-    margin: 2px auto;
+    margin: 0px;
 }
 
 h2 { 
@@ -41,10 +42,6 @@ label {
 	color: white;
 	margin: 0px;
 	}
-	
-select {
-	font-family: 'Roboto Slab', sans-serif;
-}
 
 .sidebar_item {
 	background-color: #E8EEEC;
@@ -58,10 +55,21 @@ select {
 	margin: 0px;
 	}
 
-#search{
-	margin-bottom: 3px;
+.column {
+	text-align: center;
+    float: left;
+    width: 200px;
+	margin: 10px;
 }
-	
+
+.main {
+	margin-left: 210px;
+	margin-right: 210px;
+	border: 2px solid grey;
+	margin-bottom: 0px;
+	background-color: white;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -87,33 +95,17 @@ li a:hover {
     background-color: #111;
 }
 
-.column {
-	text-align: center;
-    float: left;
-    width: 200px;
-	margin: 10px;
-}
-
-.main {
-	margin-left: 210px;
-	margin-right: 210px;
-	border: 1px solid white;
-	border-left: 2px solid grey;
-	border-right: 2px solid grey;
-	margin-bottom: 0px;
-	background-color: white;
-}
-
-.photo{
+.order{
 	border: 1px solid black;
 	margin: 10px;
-	height: 260px;
+	height: 200px;
 	background-color: white; 
 }
 
-.photo h3,label {
+.order h3,label {
 	background-color: white;
 	color: black;
+	margin: 10px;
 }
 
 aside {
@@ -122,14 +114,19 @@ aside {
 }
 
 img {
-	width: 250px;
-	height: 250px;
+	width: 160px;
+	height: 160px;
 	float: left;
 	margin-right: 10px;
 }
 
 a{
 	text-decoration: none;
+}
+
+.form {
+	margin: 10px;
+	font-size: 1.2em;
 }
 
 .header {
@@ -198,8 +195,3 @@ a{
     text-align: center;
 }
 /* BANNER ELEMENTS END */
-
-.admin{
-	margin-top: 10px;
-	color: blue;
-}
