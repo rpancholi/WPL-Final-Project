@@ -20,6 +20,9 @@ CREATE TABLE customer (
   username      VARCHAR(30) NOT NULL,
   password      VARCHAR(255) NOT NULL,
   email      	VARCHAR(255) NOT NULL,
+  phone      	VARCHAR(255) NOT NULL,
+  address      	VARCHAR(255) NOT NULL,
+  admin_rights	BOOLEAN NOT NULL,
   CONSTRAINT pk_customer PRIMARY KEY (username)
 );
 
@@ -30,6 +33,7 @@ CREATE TABLE photo (
   event_name	VARCHAR(30) NOT NULL,
   event_date	DATE NOT NULL,
   selected		BOOLEAN NOT NULL,
+  deleted		BOOLEAN NOT NULL,
   CONSTRAINT pk_photo PRIMARY KEY (id),
   Constraint fk_photo_customer FOREIGN KEY (username) references Customer(username)
 );
@@ -44,21 +48,13 @@ CREATE TABLE Purchase_summary (
   Constraint fk_purchase_customer FOREIGN KEY (username) references Customer(username)
 );
 
-DROP TABLE IF EXISTS service;
-CREATE TABLE service (
-  pic_size     VARCHAR(30) NOT NULL, 
-  id		int not null AUTO_INCREMENT,
-  pic_backing	VARCHAR(30) NOT NULL,
-  pic_frame	VARCHAR(30) NOT NULL,
-  CONSTRAINT pk_service PRIMARY KEY (id)
-);
-
 DROP TABLE IF EXISTS frames;
 CREATE TABLE frames (
   frame_name      VARCHAR(30) NOT NULL, 
   id			int not null AUTO_INCREMENT,
   image_file_name	VARCHAR(30) NOT NULL,
   price DECIMAL(4,2) NOT NULL,
+  deleted		BOOLEAN NOT NULL,
   CONSTRAINT pk_frame PRIMARY KEY (id)
 );
 
@@ -68,6 +64,7 @@ CREATE TABLE mats (
   id			int not null AUTO_INCREMENT,
   image_file_name	VARCHAR(30) NOT NULL,
   price DECIMAL(4,2) NOT NULL,
+  deleted		BOOLEAN NOT NULL,
   CONSTRAINT pk_mat PRIMARY KEY (id)
 );
 
@@ -76,51 +73,50 @@ CREATE TABLE sizes (
   size      VARCHAR(30) NOT NULL, 
   dimensions	VARCHAR(30) NOT NULL,
   price DECIMAL(4,2) NOT NULL,
+  deleted		BOOLEAN NOT NULL,
   CONSTRAINT pk_mat PRIMARY KEY (size)
 );
 
 -- Insert statements test
-INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com');
-INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com');
-INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com');
-INSERT INTO customer VALUES ('Fred','p4','fred@gmail.com');
+INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com','214-100-1000','1000 N Big Rd, Dallas Tx 75001',true);
+INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com','214-200-2000','2000 N Big Rd, Dallas Tx 75002',false);
+INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com','214-300-3000','3000 N Big Rd, Dallas Tx 75003',false);
+INSERT INTO customer VALUES ('Fred','p4','fred@gmail.com','214-400-4000','4000 N Big Rd, Dallas Tx 75004',false);
 
-INSERT INTO photo VALUES ('Tom',1,"Birthday","2001/04/10",false);
-INSERT INTO photo VALUES ('Tom',5,"Company Party","2002/06/22",false);
-INSERT INTO photo VALUES ('Tom',6,"Dance","2002/06/22",false);
-INSERT INTO photo VALUES ('Tom',7,"Food Competition","2002/06/22",false);
-INSERT INTO photo VALUES ('Tom',8,"Birthday","2001/04/10",false);
-INSERT INTO photo VALUES ('Tom',9,"Company Party","2002/06/22",false);
-INSERT INTO photo VALUES ('Tom',10,"Birthday","2001/04/10",false);
-INSERT INTO photo VALUES ('Tom',11,"Company Party","2002/06/22",false);
-INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false);
-INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false);
-INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false);
+INSERT INTO photo VALUES ('Tom',1,"Birthday","2001/04/10",false,false);
+INSERT INTO photo VALUES ('Tom',5,"Company Party","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',6,"Dance","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',7,"Food Competition","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',8,"Birthday","2001/04/10",false,false);
+INSERT INTO photo VALUES ('Tom',9,"Company Party","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',10,"Birthday","2001/04/10",false,false);
+INSERT INTO photo VALUES ('Tom',11,"Company Party","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false,false);
 
 INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom', 'A4, Gold Frame, No Backing', '2002/06/22');
 
-INSERT INTO service(pic_size,pic_backing,pic_frame) VALUES ('A4','Yes','Gold');
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Black Decorated', 'black_rect_thick', "49.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Black Modern', 'black_rect_thin', "14.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Black Modern Showcase', 'black_sq_thin', "10.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Black Modern Impact', 'black_sq_thin_2', "10.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Bold Gold', 'gold_rect_thick', "39.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Gold Modern', 'gold_rect_thin', "29.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Classic White', 'white_rect_thick', "15.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('White Filigree', 'white_round_thick', "24.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('White Modern Showcase', 'white_sq_thick', "17.99",false);
+INSERT INTO frames(frame_name, image_file_name, price, deleted) VALUES ('Simple Wood', 'wood_sq_thin', "9.99",false);
 
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Decorated', 'black_rect_thick', "49.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern', 'black_rect_thin', "14.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern Showcase', 'black_sq_thin', "10.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Black Modern Impact', 'black_sq_thin_2', "10.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Bold Gold', 'gold_rect_thick', "39.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Gold Modern', 'gold_rect_thin', "29.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Classic White', 'white_rect_thick', "15.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('White Filigree', 'white_round_thick', "24.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('White Modern Showcase', 'white_sq_thick', "17.99");
-INSERT INTO frames(frame_name, image_file_name, price) VALUES ('Simple Wood', 'wood_sq_thin', "9.99");
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Jet Black', 'black', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Royal Blue', 'blue', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Vintage Cream', 'cream', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Emerald Green', 'green', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Demure Grey', 'grey', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Vibrant Red', 'red', "1.99",false);
+INSERT INTO mats(mat_name, image_file_name, price, deleted) VALUES ('Classic White', 'white', "1.99",false);
 
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Jet Black', 'black', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Royal Blue', 'blue', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Vintage Cream', 'cream', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Emerald Green', 'green', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Demure Grey', 'grey', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Vibrant Red', 'red', "1.99");
-INSERT INTO mats(mat_name, image_file_name, price) VALUES ('Classic White', 'white', "1.99");
-
-INSERT INTO sizes(size, dimensions, price) VALUES ('A4', '210mm × 297mm', "9.99");
-INSERT INTO sizes(size, dimensions, price) VALUES ('A3', '297mm x 420mm', "11.99");
-INSERT INTO sizes(size, dimensions, price) VALUES ('A3+', '329mm x 483mm', "12.99");
-INSERT INTO sizes(size, dimensions, price) VALUES ('A2', '420mm x 594mm', "15.99");
+INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A4', '210mm × 297mm', "9.99",false);
+INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A3', '297mm x 420mm', "11.99",false);
+INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A3+', '329mm x 483mm', "12.99",false);
+INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A2', '420mm x 594mm', "15.99",false);

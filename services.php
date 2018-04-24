@@ -105,7 +105,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     <?php echo "Welcome ".ucfirst($_SESSION['sess_username'])."!" ?>
                 </div>
                 <div class = "navbar-item">
-                    <a href=photos.php>Photos</a>
+                    <a href=photos.php#home>Photos</a>
                 </div>
                 <div class = "navbar-item sign-out">
                     <a href=login.html>Sign Out</a>

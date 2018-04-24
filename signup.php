@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				session_regenerate_id(); 
 				$_SESSION['sess_username'] = $username;
 				session_write_close();
-				header('Location: photos.php');
+				header('Location: photos.php#home');
 				exit();
 			//}
 		}

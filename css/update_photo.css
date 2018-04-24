@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-    margin: 2px auto;
+    margin: 0px;
 }
 
 h2 { 
@@ -41,10 +41,6 @@ label {
 	color: white;
 	margin: 0px;
 	}
-	
-select {
-	font-family: 'Roboto Slab', sans-serif;
-}
 
 .sidebar_item {
 	background-color: #E8EEEC;
@@ -58,35 +54,6 @@ select {
 	margin: 0px;
 	}
 
-#search{
-	margin-bottom: 3px;
-}
-	
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #111;
-}
-
 .column {
 	text-align: center;
     float: left;
@@ -97,9 +64,7 @@ li a:hover {
 .main {
 	margin-left: 210px;
 	margin-right: 210px;
-	border: 1px solid white;
-	border-left: 2px solid grey;
-	border-right: 2px solid grey;
+	border: 2px solid grey;
 	margin-bottom: 0px;
 	background-color: white;
 }
@@ -122,13 +87,19 @@ aside {
 }
 
 img {
-	width: 250px;
+	width: 160px;
+	height: 160px;
 	float: left;
 	margin-right: 10px;
 }
 
 a{
 	text-decoration: none;
+}
+
+.form {
+	margin: 10px;
+	font-size: 1.2em;
 }
 
 .header {
@@ -197,8 +168,3 @@ a{
     text-align: center;
 }
 /* BANNER ELEMENTS END */
-
-.admin{
-	margin-top: 10px;
-	color: blue;
-}
