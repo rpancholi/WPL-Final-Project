@@ -82,6 +82,8 @@ INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com','214-100-1000','1000 N B
 INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com','214-200-2000','2000 N Big Rd, Dallas Tx 75002',false);
 INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com','214-300-3000','3000 N Big Rd, Dallas Tx 75003',false);
 INSERT INTO customer VALUES ('Fred','p4','fred@gmail.com','214-400-4000','4000 N Big Rd, Dallas Tx 75004',false);
+INSERT INTO customer VALUES ('admin','d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892','admin@gmail.com','214-100-1000','1000 N Admin Rd, Dallas Tx 75001',true);
+
 
 INSERT INTO photo VALUES ('Tom',1,"Birthday","2001/04/10",false,false);
 INSERT INTO photo VALUES ('Tom',5,"Company Party","2002/06/22",false,false);

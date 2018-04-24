@@ -120,9 +120,6 @@ $photos = mysqli_query ($con,$query_photo);
             <div class = "user-welcome">
                 <?php echo "Welcome ".ucfirst($_SESSION['sess_username'])."!" ?>
             </div>
-            <div class = "navbar-item">
-                <a href=services.php>Services</a>
-            </div>
 			<div class = "navbar-item">
                 <a href=order_history.php>Purchase History</a>
             </div><aside>
@@ -181,24 +178,13 @@ $photos = mysqli_query ($con,$query_photo);
 					echo "<h3>Event Name: $photo_name</h3>";
 					$photo_date = $photo['event_date'];
 					echo "<h3>Date: $photo_date</h3>";
-					$selected = $photo['selected'];
-					echo "<label for='$photo_id'>Select Photo:</label>";
+					echo "<label for='$photo_id'>Select Photo: </label>";
 					//check if photo previously checked or not
-					if(isset($_POST['submit']) && isset($_POST[$photo_id]) && !$selected){
-						$query_select = "UPDATE photo SET selected = true WHERE id = $photo_id;";
-						mysqli_query ($con,$query_select);	
-						$selected=true;
+					if(isset($_POST[$photo_id])){
+						$_SESSION['selected_id'] = $photo_id;
+						header('Location: services.php');
 					}
-					else if(isset($_POST['submit']) && !isset($_POST[$photo_id]) && $selected){
-						$query_deselect = "UPDATE photo SET selected = false WHERE id = $photo_id;";
-						mysqli_query ($con,$query_deselect);
-						$selected=false;
-					}
-					//display checkbox as checked or not
-					if($selected)
-						echo "<input type='checkbox' name = '$photo_id' value = 'select' checked>";
-					else
-						echo "<input type='checkbox' name = '$photo_id' value = 'select'>";
+					echo "<input type='submit' name = '$photo_id' value = 'Select'>";
 					echo "<br>";
 					if($admin){
 						echo "<input type='submit' class='admin' onclick=submitForm('update_photo.php#home') name='update_photo_$photo_id' value='Update Photo'/>";
@@ -209,10 +195,6 @@ $photos = mysqli_query ($con,$query_photo);
 			}
 		}
 	?>
-	<div class="form">
-		<label for="submit" class="black">Save selection:</label>
-		<input type="submit" action="" name="submit" value="Submit">
-	</div>
 	<br>
 	<div>
 		<?php //add prev page or next page buttons contextually

@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$query = "SELECT username, password FROM customer WHERE username = '$username';";
 		$result = mysqli_query ($con,$query);
 		if($userData = mysqli_fetch_array($result)){
-			if($password == $userData['password'])
+			$hash = hash('sha256', $password);
+			if($hash == $userData['password'])
 			{
 				session_regenerate_id(); 
 				$_SESSION['sess_username'] = $username;
