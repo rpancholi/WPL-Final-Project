@@ -184,7 +184,7 @@ $photos = mysqli_query ($con,$query_photo);
 						$_SESSION['selected_id'] = $photo_id;
 						header('Location: services.php');
 					}
-					echo "<input type='submit' name = '$photo_id' value = 'Select'>";
+					echo "<input id='selectButton' type='submit' name = '$photo_id' value = 'Select'>";
 					echo "<br>";
 					if($admin){
 						echo "<input type='submit' class='admin' onclick=submitForm('update_photo.php#home') name='update_photo_$photo_id' value='Update Photo'/>";

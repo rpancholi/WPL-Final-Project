@@ -22,6 +22,12 @@ if (!$con) {
 	die("Connection failed: " . mysqli_connect_error());
 }
 
+// SQL query to check if user is admin
+$adminQuery = "SELECT * FROM customer WHERE username = '$username';";
+$result = mysqli_query ($con,$adminQuery);
+$userData = mysqli_fetch_array($result);
+$admin = $userData['admin_rights'];
+
 // SQL query to select all frames from frames table
 $frames_sql = "SELECT * FROM frames;";
 $frames_result = mysqli_query($con, $frames_sql);

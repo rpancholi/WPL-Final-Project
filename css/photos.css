@@ -242,7 +242,7 @@ a{
 	box-shadow: 0 15px 16px 0 rgba(255, 45, 45, 0.24), 0 17px 50px 0 rgba(255, 164, 164, 0.19);
 }
 
-#previousPageButton, #nextPageButton, #searchButton{
+#selectButton, #previousPageButton, #nextPageButton, #searchButton{
 	margin: 10px 2px;
 	transition-duration: 0.4s;
     background-color: white; /* Green */
@@ -256,7 +256,7 @@ a{
     font-size: 1em;
 }
 
-#previousPageButton, #nextPageButton:hover, #searchButton:hover{
+#selectButton:hover, #previousPageButton, #nextPageButton:hover, #searchButton:hover{
     /* background-color:#008CBA; */
     background-color: rgb(127, 174, 249);
     color: white;
