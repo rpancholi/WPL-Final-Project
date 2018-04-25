@@ -157,7 +157,7 @@ else if (isset($_POST['delete'])){ //remove from cart
 		}
         echo "</table>";
 		if(isset($_COOKIE['id']))
-			echo "<input type='submit' id='comfrimationButton' name='checkout' onclick='clicked(event)' value='Confirm Order!'";
+			echo "<input type='submit' id='confirmationButton' name='checkout' onclick='clicked(event)' value='Confirm Order!'";
     ?>
     </div>
 	</form>

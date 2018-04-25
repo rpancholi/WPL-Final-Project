@@ -250,7 +250,7 @@ td,th {
 /* TABLE STYLING END */
 
 /* CONFIRMATION BUTTON STYLING */
-#comfrimationButton {
+#confirmationButton {
 	display:block; 
     transition-duration: 0.4s;
     background-color: white; /* Green */
@@ -266,7 +266,7 @@ td,th {
 	margin:10 auto;
 }
 
-#comfrimationButton:hover {
+#confirmationButton:hover {
     /* background-color:#008CBA; */
     background-color: rgb(127, 174, 249);
     color: white;
