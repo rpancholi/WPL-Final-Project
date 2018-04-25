@@ -83,7 +83,7 @@ CREATE TABLE sizes (
 INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com','214-100-1000','1000 N Big Rd, Dallas Tx 75001',true);
 INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com','214-200-2000','2000 N Big Rd, Dallas Tx 75002',false);
 INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com','214-300-3000','3000 N Big Rd, Dallas Tx 75003',false);
-INSERT INTO customer VALUES ('Fred','p4','fred@gmail.com','214-400-4000','4000 N Big Rd, Dallas Tx 75004',false);
+INSERT INTO customer VALUES ('Fred','ab71fc4c8a1c4d62b9202b36ee7c07dd398a0907a37037bd8c3959d6af573608','fred@gmail.com','214-400-4000','4000 N Big Rd, Dallas Tx 75004',false);
 INSERT INTO customer VALUES ('admin','d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892','admin@gmail.com','214-100-1000','1000 N Admin Rd, Dallas Tx 75001',true);
 
 

@@ -39,8 +39,18 @@ $size = $_COOKIE['size'];
 $totalPrice = $_COOKIE['price'];   
 
 if(isset($_POST['checkout'])){ //write it to the DB
+    // Get purchase quantity
+    $quantity = $_POST['quantityInput'];
+
+    // Decrement Inventory
+    $updateFrameInventoryQuery = "UPDATE frames SET inventory = (inventory - $quantity) WHERE frame_name = '$frame';";
+    $result = mysqli_query($con,$updateFrameInventoryQuery);
+    $updateMatInventoryQuery = "UPDATE mats SET inventory = (inventory - $quantity) WHERE mat_name = '$mat';";
+    $result = mysqli_query($con,$updateMatInventoryQuery);
+
+    // Insert Order Summary into database
 	$date = date("Y/m/d");
-	$quantity = $_POST['quantityInput'];
+
 	$summary = "INSERT INTO purchase_summary (username, description, purchase_date) VALUES ('$username','Photo: $pictureID(x$quantity), Frame: $frame, Mat: $mat, Size: $size, Total Price: $totalPrice','$date')";
 	if(mysqli_query($con,$summary)){
 		echo "<script type='text/javascript'>alert('Purchased!');</script>";
@@ -48,7 +58,7 @@ if(isset($_POST['checkout'])){ //write it to the DB
 		unset($_COOKIE['frame']);
 		unset($_COOKIE['mat']);
 		unset($_COOKIE['size']);
-		unset($_COOKIE['price']);
+        unset($_COOKIE['price']);
 	}
 	else{ //query failed
 		$error = mysqli_error($con);

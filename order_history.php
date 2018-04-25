@@ -103,6 +103,7 @@ $history = mysqli_query($con, $query);
 				$description = $summary['description'];
 				$date = $summary['purchase_date'];
 
+				echo "alert($description)";
 				echo "<div class = 'order'>";
 				echo "<h3>Order Number: $order_count</h3>";
 				echo "<h3>User: $user</h3>";
