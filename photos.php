@@ -140,14 +140,9 @@ $photos = mysqli_query ($con,$query_photo);
         </div>
     </div>
     <div class="banner">
-<<<<<<< HEAD
-        <h1>Photo Framing Services</h1>
-        <h1>Frame your heart out</h1>
-        <h3>Look through your photos and choose one you like.</h3>
-=======
 		<h1>S & R</h1>
         <h1>Event Photography Services</h1>
->>>>>>> caf42741ad6e396b8ce9445b7094e6703efdddcb
+        <h3>Look through your photos and choose one you like.</h3>
     </div>
 	
 	<form action="" method="post" id="searchForm">
@@ -187,16 +182,8 @@ $photos = mysqli_query ($con,$query_photo);
 				$photo_count++;
 				if($photo_count>$page_min && $photo_count <= $page_max){
 					$photo_id = $photo['id'];
-<<<<<<< HEAD
-					if(isset($_POST[$photo_id])){
-						$_SESSION['selected_id'] = $photo_id;
-						header('Location: services.php');
-					}
 					echo"<div class='photo'>";
-					echo "<img src = 'resources/$photo_id.png'/>";
-=======
 					echo "<img src = 'resources/$photo_id.jpeg'/>";
->>>>>>> caf42741ad6e396b8ce9445b7094e6703efdddcb
 					echo "<h3>ID: $photo_id.</h3>";
 					$photo_name = $photo['event_name'];
 					echo "<h3>Event Name: $photo_name</h3>";

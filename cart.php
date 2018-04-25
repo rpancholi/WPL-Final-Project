@@ -130,15 +130,13 @@ else if (isset($_POST['delete'])){ //remove from cart
 	<div class="main">
     <h2>Shopping Cart</h2>
     
-    <?php //display the photos from the session variable
     <?php
         echo "<table id='orderConfirmationTable'>
         <caption> Your Order Summary </caption>
         <thead><tr><th>Picture</th><th>Frame</th><th>Mat</th><th>Size</th><th>Quantity</th><th>Total Price</th></tr></thead>";
-<<<<<<< HEAD
 		if(isset($_COOKIE['id'])){
 			echo "<tr>";
-			echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".png'/>"."</td>";
+			echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".jpeg'/>"."</td>";
 			echo "<td align='center'>".$frame."</td>";
 			echo "<td align='center'>".$mat."</td>";
 			echo "<td align='center'>".$size."</td>";
@@ -147,11 +145,6 @@ else if (isset($_POST['delete'])){ //remove from cart
 			echo "<td id='deleteButton' align='center'><input name='delete' id='delete' type='submit' value='Delete'></td>";
 			echo "</tr>";
 		}
-=======
-
-        echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".jpeg'/>"."</td>";
-
->>>>>>> caf42741ad6e396b8ce9445b7094e6703efdddcb
         echo "</table>";
 		if(isset($_COOKIE['id']))
 			echo "<input type='submit' id='comfrimationButton' name='checkout' onclick='clicked(event)' value='Confirm Order!'";
