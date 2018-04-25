@@ -183,8 +183,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     }
                     while($row = mysqli_fetch_array($frames_result)){
                         $deleted = $row['deleted'];
-                        $available = ($row['inventory'] > 0);
-                        if(!$deleted && $available){
+                        if(!$deleted){
                             $name = $row['image_file_name'];
                             echo "<article class='product-image'>";
                             echo "<figure>";
@@ -213,8 +212,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                     }
                     while($row = mysqli_fetch_array($mats_result)){
                         $deleted = $row['deleted'];
-                        $available = ($row['inventory'] > 0);
-                        if(!$deleted && $available){
+                        if(!$deleted){
                             $name = $row['image_file_name'];
                             echo "<article class='product-image'>";
                             echo "<figure>";
