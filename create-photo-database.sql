@@ -50,7 +50,7 @@ CREATE TABLE Purchase_summary (
 
 DROP TABLE IF EXISTS frames;
 CREATE TABLE frames (
-  frame_name      VARCHAR(30) NOT NULL, 
+  name      VARCHAR(30) NOT NULL, 
   id			int not null AUTO_INCREMENT,
   image_file_name	VARCHAR(30) NOT NULL,
   price DECIMAL(4,2) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE frames (
 
 DROP TABLE IF EXISTS mats;
 CREATE TABLE mats (
-  mat_name      VARCHAR(30) NOT NULL, 
+  name      VARCHAR(30) NOT NULL, 
   id			int not null AUTO_INCREMENT,
   image_file_name	VARCHAR(30) NOT NULL,
   price DECIMAL(4,2) NOT NULL,
@@ -99,24 +99,24 @@ INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false,false);
 
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Decorated', 'black_rect_thick', "49.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Modern', 'black_rect_thin', "14.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Modern Showcase', 'black_sq_thin', "10.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Modern Impact', 'black_sq_thin_2', "10.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Bold Gold', 'gold_rect_thick', "39.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Gold Modern', 'gold_rect_thin', "29.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Classic White', 'white_rect_thick', "15.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('White Filigree', 'white_round_thick', "24.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('White Modern Showcase', 'white_sq_thick', "17.99","100",false);
-INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Simple Wood', 'wood_sq_thin', "9.99", "100", false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Decorated', 'black_rect_thick', "49.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Modern', 'black_rect_thin', "14.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Modern Showcase', 'black_sq_thin', "10.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Modern Impact', 'black_sq_thin_2', "10.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Bold Gold', 'gold_rect_thick', "39.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Gold Modern', 'gold_rect_thin', "29.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Classic White', 'white_rect_thick', "15.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('White Filigree', 'white_round_thick', "24.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('White Modern Showcase', 'white_sq_thick', "17.99","100",false);
+INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Simple Wood', 'wood_sq_thin', "9.99", "100", false);
 
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Jet Black', 'black', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Royal Blue', 'blue', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Vintage Cream', 'cream', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Emerald Green', 'green', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Demure Grey', 'grey', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Vibrant Red', 'red', "1.99","100",false);
-INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Classic White', 'white', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Jet Black', 'black', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Royal Blue', 'blue', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Vintage Cream', 'cream', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Emerald Green', 'green', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Demure Grey', 'grey', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Vibrant Red', 'red', "1.99","100",false);
+INSERT INTO mats(name, image_file_name, price, inventory, deleted) VALUES ('Classic White', 'white', "1.99","100",false);
 
 INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A4', '210mm x 297mm', "9.99",false);
 INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A3', '297mm x 420mm', "11.99",false);

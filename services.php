@@ -29,6 +29,22 @@ $result = mysqli_query ($con,$adminQuery);
 $userData = mysqli_fetch_array($result);
 $admin = $userData['admin_rights'];
 
+//check if item is deleted
+if($admin){
+    $tempQuery  = "SELECT image_file_name from frames UNION SELECT image_file_name from mats;";
+	$temps = mysqli_query ($con,$tempQuery);
+	while($temp = mysqli_fetch_array($temps)){
+        $temp_name = $temp['image_file_name'];
+		if(isset($_POST['delete_item_'.$temp_name])){
+			$deleteFrameQuery = "UPDATE frames SET deleted = true WHERE image_file_name = '$temp_name';";
+            mysqli_query($con,$deleteFrameQuery);
+            $deleteMatQuery = "UPDATE mats SET deleted = true WHERE image_file_name = '$temp_name';";
+            mysqli_query($con,$deleteMatQuery);
+            header("Refresh:0");
+		}
+	}
+}
+
 // SQL query to select all frames from frames table
 $frames_sql = "SELECT * FROM frames;";
 $frames_result = mysqli_query($con, $frames_sql);
@@ -109,9 +125,19 @@ $sizes_result = mysqli_query($con, $sizes_sql);
         document.cookie = "price="+currentPrice.innerText;
         window.location.replace("cart.php");
     }
+    function clicked(e)
+    {
+        if(!confirm('Are you sure you want to delete the item?'))e.preventDefault();
+    }
+    function submitForm(dest) {
+        var form = document.getElementById('searchForm');
+        form.action = dest;
+        form.submit();
+    }
 </script>
 
 <body>
+<form action="" method="post" id="searchForm">
     <div class="wrapper">
     <!-- <section class="section-background"></section> -->
         <!-- Navbar for site navigation -->
@@ -133,6 +159,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
             <h1>Frame your heart out</h1>
             <h3>Choose your favorite frame and matting. We’ll custom cut, craft and build it from scratch.</h3>
         </div>
+
         <div class="sidebar">
             <h3>Select framing for photo: <?php echo "<img id='selectedPhoto' src = 'resources/".$_SESSION['selected_id'].".jpeg'/>"; ?></h3>
             <h1>You've Selected:</h1>
@@ -155,14 +182,23 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                         echo "SOMETHING WENT WRONG!";
                     }
                     while($row = mysqli_fetch_array($frames_result)){
-                        echo "<article class='product-image'>";
-                        echo "<figure>";
-                        echo "<img src='resources/frames/".$row['image_file_name'].".jpg"."' alt='Frame Image' title='".$row['frame_name']."'"."data-id=".$row["id"].">";
-                        echo "<figcaption onclick=\"selectFrame(".'\''.$row['id'].'\''.",".'\''.$row['frame_name'].'\''.",".'\''.$row['price'].'\''.");\">";
-                        echo "<h1>".$row['frame_name']."<br/>"."$".$row['price']."</h1>";
-                        echo "</figcaption>";
-                        echo "</figure>";
-                        echo "</article>";
+                        $deleted = $row['deleted'];
+                        if(!$deleted){
+                            $name = $row['image_file_name'];
+                            echo "<article class='product-image'>";
+                            echo "<figure>";
+                            echo "<img src='resources/frames/".$row['image_file_name'].".jpg"."' alt='Frame Image' title='".$row['name']."'"."data-id=".$row["id"].">";
+                            echo "<figcaption onclick=\"selectFrame(".'\''.$row['id'].'\''.",".'\''.$row['name'].'\''.",".'\''.$row['price'].'\''.");\">";
+                            echo "<h1>".$row['name']."<br/>"."$".$row['price'];
+                            if($admin){
+                                echo "<br/><input class='admin' type='submit' id='editButton' onclick=submitForm('update_service_items.php#home') name='update_item_$name' value='Edit'/>";
+                                echo "<br/><input class='admin' type='submit' id='deleteButton' onclick='clicked(event)' name='delete_item_$name' value='Delete'/>";
+                            }
+                            echo "</h1>";
+                            echo "</figcaption>";
+                            echo "</figure>";
+                            echo "</article>";
+                        }
                     }
                 ?>
             </section>
@@ -175,14 +211,24 @@ $sizes_result = mysqli_query($con, $sizes_sql);
                         echo "SOMETHING WENT WRONG!";
                     }
                     while($row = mysqli_fetch_array($mats_result)){
-                        echo "<article class='product-image'>";
-                        echo "<figure>";
-                        echo "<img src='resources/mats/".$row['image_file_name'].".jpg"."' alt='Mat Image' title='".$row['mat_name']."'"."data-id=".$row["id"].">";
-                        echo "<figcaption onclick=\"selectMat(".'\''.$row['id'].'\''.",".'\''.$row['mat_name'].'\''.",".'\''.$row['price'].'\''.");\">";
-                        echo "<h1>".$row['mat_name']."<br/>"."$".$row['price']."</h1>";
-                        echo "</figcaption>";
-                        echo "</figure>";
-                        echo "</article>";
+                        $deleted = $row['deleted'];
+                        if(!$deleted){
+                            $name = $row['image_file_name'];
+                            echo "<article class='product-image'>";
+                            echo "<figure>";
+                            echo "<img src='resources/mats/".$row['image_file_name'].".jpg"."' alt='Mat Image' title='".$row['name']."'"."data-id=".$row["id"].">";
+                            echo "<figcaption onclick=\"selectMat(".'\''.$row['id'].'\''.",".'\''.$row['name'].'\''.",".'\''.$row['price'].'\''.");\">";
+                            echo "<h1>".$row['name']."<br/>"."$".$row['price'];
+                            if($admin){
+                                echo "<br/><input class='admin' type='submit' id='editButton' onclick=submitForm('update_service_items.php#home') name='update_item_$name' value='Edit'/>";
+                                echo "<br/><input class='admin' type='submit' id='deleteButton' onclick='clicked(event)' name='delete_item_$name' value='Delete'/>";
+                            }
+
+                            echo "</h1>";
+                            echo "</figcaption>";
+                            echo "</figure>";
+                            echo "</article>";
+                        }
                     }
                 ?>
             </section>
@@ -202,5 +248,6 @@ $sizes_result = mysqli_query($con, $sizes_sql);
             </section>
         </div>
     </div>
+    </form>
 </body>
 </html>

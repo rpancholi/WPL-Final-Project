@@ -285,6 +285,48 @@ figcaption:hover {
     transform: translateY(0);
 } */
 
+#editButton{
+	margin: 10px 2px;
+	transition-duration: 0.4s;
+    background-color: white; /* Green */
+    /* border: 2px solid #008CBA; */
+    border: 2px solid rgb(127, 249, 127);
+    border-radius: 4px;
+    color: rgb(127, 249, 127);
+    text-align: center;
+    padding: 2px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 1em;
+}
+
+#editButton:hover {
+    /* background-color:#008CBA; */
+    background-color: rgb(127, 249, 127);
+    color: white;
+	box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#deleteButton {
+	margin: 10px 2px;
+	transition-duration: 0.4s;
+    background-color: white; /* Green */
+    /* border: 2px solid #008CBA; */
+    border: 2px solid rgb(247, 45, 45);
+    border-radius: 4px;
+    color: rgb(247, 45, 45);
+    text-align: center;
+    padding: 2px;
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 1em;
+}
+
+#deleteButton:hover {
+    /* background-color:#008CBA; */
+    background-color: rgb(247, 45, 45);
+    color: white;
+	box-shadow: 0 15px 16px 0 rgba(255, 45, 45, 0.24), 0 17px 50px 0 rgba(255, 164, 164, 0.19);
+}
+
 /* PRODUCT ELEMENTS END */
 
 /* SIZE SELECTOR ELEMENTS */

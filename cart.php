@@ -43,9 +43,9 @@ if(isset($_POST['checkout'])){ //write it to the DB
     $quantity = $_POST['quantityInput'];
 	
     // Decrement Inventory
-    $updateFrameInventoryQuery = "UPDATE frames SET inventory = (inventory - $quantity) WHERE frame_name = '$frame';";
+    $updateFrameInventoryQuery = "UPDATE frames SET inventory = (inventory - $quantity) WHERE name = '$frame';";
     $result = mysqli_query($con,$updateFrameInventoryQuery);
-    $updateMatInventoryQuery = "UPDATE mats SET inventory = (inventory - $quantity) WHERE mat_name = '$mat';";
+    $updateMatInventoryQuery = "UPDATE mats SET inventory = (inventory - $quantity) WHERE name = '$mat';";
     $result = mysqli_query($con,$updateMatInventoryQuery);
 
     // Insert Order Summary into database

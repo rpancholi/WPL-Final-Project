@@ -104,7 +104,7 @@ if(isset($_POST['save'])){
         </div>
     </div>
     <div class="banner">
-        <h1>Photo Framing Services</h1>
+        <h1>S & R Photography</h1>
         <h1>Frame your heart out</h1>
     </div>
 	
@@ -119,25 +119,25 @@ if(isset($_POST['save'])){
 		<?php
 			if(isset($imgId) && $imgId!=''){
 				echo "<div class='form'>";
-				echo "<img src = 'resources/$imgId.jpeg' alt='Image Placeholder'/>";			
+				echo "<img src = 'resources/$imgId.png' alt='Image Placeholder'/>";			
 				echo "</div>";
 			}
 		?>
 		<div class = "form">
-			<label for="id" class="black">Photo ID:</label>
+			<label for="id" class="black">Resource ID:</label>
 			<input type="text" id="id" name="id" value="<?php echo (isset($imgId) && $imgId!=0) ? $imgId : '' ?>" required/>
 		</div>
 		<div class = "form">
-			<label for="user" class="black">User:</label>
-			<input type="text" id="user" name="user" value="<?php echo isset($event_user) ? $event_user : '' ?>" required/>
-		</div>
-		<div class = "form">
-			<label for="name" class="black">Event Name:</label>
+			<label for="name" class="black">Image File Name:</label>
 			<input type="text" id="name" name="name" value="<?php echo isset($event_name) ? $event_name : '' ?>" required/>
 		</div>
 		<div class = "form">
-			<label for="date" class="black">Event Date:</label>
-			<input type="text" id="date" name="date" value="<?php echo isset($event_date) ? $event_date : '' ?>" required/>
+			<label for="price" class="black">Price:</label>
+			<input type="text" id="price" name="price" value="<?php echo isset($event_date) ? $event_date : '' ?>" required/>
+		</div>
+		<div class = "form">
+			<label for="inventory" class="black">Inventory:</label>
+			<input type="text" id="inventory" name="inventory" value="<?php echo isset($event_date) ? $event_date : '' ?>" required/>
 		</div>
 		<div class="form">
 			<input type="submit" name="save" value="Save">

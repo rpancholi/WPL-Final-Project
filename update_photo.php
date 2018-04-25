@@ -119,7 +119,7 @@ if(isset($_POST['save'])){
 		<?php
 			if(isset($imgId) && $imgId!=''){
 				echo "<div class='form'>";
-				echo "<img src = 'resources/$imgId.png' alt='Image Placeholder'/>";			
+				echo "<img src = 'resources/$imgId.jpeg' alt='Image Placeholder'/>";			
 				echo "</div>";
 			}
 		?>
