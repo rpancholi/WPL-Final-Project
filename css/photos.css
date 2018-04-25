@@ -258,7 +258,7 @@ a{
     font-size: 1em;
 }
 
-#selectButton:hover, #previousPageButton, #nextPageButton:hover, #searchButton:hover{
+#selectButton:hover, #previousPageButton:hover, #nextPageButton:hover, #searchButton:hover{
     /* background-color:#008CBA; */
     background-color: rgb(127, 174, 249);
     color: white;

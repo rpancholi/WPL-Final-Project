@@ -52,7 +52,7 @@ $email = $userData['email'];
 $admin = $userData['admin_rights'];
 
 if(!$admin)
-	$query = "SELECT * FROM purchase_summary WHERE username = $username;";
+	$query = "SELECT * FROM purchase_summary WHERE username = '$username';";
 else
 	$query = "SELECT * FROM purchase_summary;";
 
@@ -96,6 +96,8 @@ $history = mysqli_query($con, $query);
 	<div class="main">
 	<h2>Order History</h2>
 	<?php //display the photos from the constructed query
+		// $summary = mysqli_fetch_array($history);
+		// echo ($summary['username']);
 		while($summary = mysqli_fetch_array($history)){
 			$order_count++;
 			if($order_count>$page_min && $order_count <= $page_max){
@@ -103,7 +105,6 @@ $history = mysqli_query($con, $query);
 				$description = $summary['description'];
 				$date = $summary['purchase_date'];
 
-				echo "alert($description)";
 				echo "<div class = 'order'>";
 				echo "<h3>Order Number: $order_count</h3>";
 				echo "<h3>User: $user</h3>";

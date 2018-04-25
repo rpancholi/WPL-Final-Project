@@ -59,6 +59,9 @@ if(isset($_POST['checkout'])){ //write it to the DB
 		unset($_COOKIE['mat']);
 		unset($_COOKIE['size']);
         unset($_COOKIE['price']);
+
+        header("location: order_history.php");
+        // header("Refresh:1; url=photos.php");
 	}
 	else{ //query failed
 		$error = mysqli_error($con);
