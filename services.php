@@ -33,7 +33,6 @@ $mats_result = mysqli_query($con, $mats_sql);
 // SQL query to select all sizes from sizes table
 $sizes_sql = "SELECT * FROM sizes;";
 $sizes_result = mysqli_query($con, $sizes_sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,16 +46,20 @@ $sizes_result = mysqli_query($con, $sizes_sql);
 
 <script>
     var chosenFrame = null;
+    var chosenFrameName = null;
     var framePrice = null;
     var chosenMat = null;
     var matPrice = null;
     var chosenSize = null;
     var currentPrice = null;
     var sizePrice = parseFloat(15.99);
+    var imageID = '<?php echo $_SESSION["selected_id"]; ?>';
+
     function selectFrame(frameID, frameName, price) {
         chosenFrame = frameID;
         var currentFrame = document.getElementById("currentFrame");
         currentFrame.innerText = frameName;
+        chosenFrameName = frameName;
         framePrice = parseFloat(price);
         costCalculator();
         enableSubmit();
@@ -91,7 +94,13 @@ $sizes_result = mysqli_query($con, $sizes_sql);
         };
     }
     function submitOrder(){
-        alert(currentPrice.innerText);
+        // Set Cookie with shopping cart data
+        document.cookie = "id="+imageID;
+        document.cookie = "frame="+chosenFrameName;
+        document.cookie = "mat="+ document.getElementById("currentMat").innerText;
+        document.cookie = "size="+document.getElementById("currentSize").innerText;
+        document.cookie = "price="+currentPrice.innerText;
+        window.location.replace("cart.php");
     }
 </script>
 
@@ -118,13 +127,13 @@ $sizes_result = mysqli_query($con, $sizes_sql);
             <h3>Choose your favorite frame and matting. We’ll custom cut, craft and build it from scratch.</h3>
         </div>
         <div class="sidebar">
-            <h3>Select framing for photo: <?php echo "<img src = 'resources/".$_SESSION['selected_id'].".png'/>"; ?></h3>
+            <h3>Select framing for photo: <?php echo "<img id='selectedPhoto' src = 'resources/".$_SESSION['selected_id'].".png'/>"; ?></h3>
             <h1>You've Selected:</h1>
             <h3>Frame: <span id="currentFrame">Select your frame!</span></h3>
             <h3>Mat:  <span id="currentMat">Select a mat!</span> </h3>
             <h3>Size: <span id="currentSize">A2</span> </h3>
             <h4 id="pricePlaceholder">Price: <span id="currentPrice"></span></h4>
-            <button type="button" id="orderButton" onclick="submitOrder();">Submit!</button>
+            <button type="button" id="orderButton" onclick="submitOrder();">Submit!</button>            
         </div>
         <div class="content">
             <section class="page-title">

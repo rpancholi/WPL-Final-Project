@@ -1,6 +1,6 @@
 /*
  *    File name: create-photo_database.sql
- *       Author: Solon Pitts
+ *       Author: Solon Pitts Rupesh Pancholi
  *    Last Edit: 2018-03-06
  *  Description: This file creates the photo DB for use in the web programming final project
  */
@@ -120,7 +120,7 @@ INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('
 INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Vibrant Red', 'red', "1.99","100",false);
 INSERT INTO mats(mat_name, image_file_name, price, inventory, deleted) VALUES ('Classic White', 'white', "1.99","100",false);
 
-INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A4', '210mm × 297mm', "9.99",false);
+INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A4', '210mm x 297mm', "9.99",false);
 INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A3', '297mm x 420mm', "11.99",false);
 INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A3+', '329mm x 483mm', "12.99",false);
 INSERT INTO sizes(size, dimensions, price, deleted) VALUES ('A2', '420mm x 594mm', "15.99",false);

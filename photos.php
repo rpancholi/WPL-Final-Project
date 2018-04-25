@@ -157,7 +157,7 @@ $photos = mysqli_query ($con,$query_photo);
 		<div class = "form">
 			<label for="search" class="black">Search for event name or date:</label>
 			<input type="text" id="search" name="search" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>" autofocus/>
-			<input type="submit" name="searchButton" value="Search">	
+			<input type="submit" id="searchButton" name="searchButton" value="Search">	
 		</div>
 	<h2>User Photos</h2>
 	<?php
@@ -188,7 +188,7 @@ $photos = mysqli_query ($con,$query_photo);
 					echo "<br>";
 					if($admin){
 						echo "<input type='submit' class='admin' onclick=submitForm('update_photo.php#home') name='update_photo_$photo_id' value='Update Photo'/>";
-						echo "<input type='submit' class='admin'  onclick='clicked(event)' name='delete_photo_$photo_id' value='Delete Photo'/>";
+						echo "<input type='submit' class='admin' id='deleteButton' onclick='clicked(event)' name='delete_photo_$photo_id' value='Delete Photo'/>";
 					}
 					echo"</div>";
 				}
@@ -199,10 +199,10 @@ $photos = mysqli_query ($con,$query_photo);
 	<div>
 		<?php //add prev page or next page buttons contextually
 		if($page_min > 0)
-			echo "<input type='submit' action='' name='prev_page' value='Previous Page'>";
+			echo "<input type='submit'  id='previousPageButton' action='' name='prev_page' value='Previous Page'>";
 		echo " Page: $page_num ";
 		if($photo_count > $page_max)
-			echo "<input type='submit' action='' name='next_page' value='Next Page'>";
+			echo "<input type='submit' id='nextPageButton' action='' name='next_page' value='Next Page'>";
 		?>
 	</div>
 	<input type="hidden" id='page_num' name ="page_num" value=<?php echo "$page_num"; ?> />
