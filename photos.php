@@ -183,7 +183,8 @@ $photos = mysqli_query ($con,$query_photo);
 				if($photo_count>$page_min && $photo_count <= $page_max){
 					$photo_id = $photo['id'];
 					echo"<div class='photo'>";
-					echo "<img src = 'resources/$photo_id.jpeg'/>";
+					// echo "<img src = 'resources/$photo_id.jpeg'/>";
+					echo "<a href='resources/$photo_id.jpeg' target='_blank'><img src='resources/$photo_id.jpeg'/></a>";
 					echo "<h3>ID: $photo_id.</h3>";
 					$photo_name = $photo['event_name'];
 					echo "<h3>Event Name: $photo_name</h3>";

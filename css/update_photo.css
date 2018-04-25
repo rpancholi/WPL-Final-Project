@@ -132,7 +132,8 @@ a{
 .navbar-item:hover {
     background: black;
     /* text-transform: uppercase; */
-    border-radius: 0px 10px 10px 10px;
+	border-radius: 0px 10px 10px 10px;
+	transition: .5s;
 }
 
 .navbar-item a:link{
@@ -145,7 +146,8 @@ a{
 }
 
 .navbar-item:hover a{
-    color: white;
+	color: white;
+	transition: .5s;
 }
 
 .sign-out {

@@ -96,7 +96,7 @@ if(isset($_POST['save'])){
                 <a href=services.php>Services</a>
             </div>
 			<div class = "navbar-item">
-                <a >Purchase History</a>
+                <a href=order_history.php>Purchase History</a>
             </div><aside>
             <div class = "navbar-item sign-out">
                 <a href=login.html>Sign Out</a>

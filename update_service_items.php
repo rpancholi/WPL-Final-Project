@@ -78,7 +78,7 @@ if(isset($_POST['save'])){
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/update_photo.css">
-    <title>Update Photo</title>
+    <title>Update Services</title>
   </head>
  
   <body>
