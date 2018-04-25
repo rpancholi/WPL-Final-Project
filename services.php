@@ -133,7 +133,7 @@ $sizes_result = mysqli_query($con, $sizes_sql);
             <h3>Choose your favorite frame and matting. We’ll custom cut, craft and build it from scratch.</h3>
         </div>
         <div class="sidebar">
-            <h3>Select framing for photo: <?php echo "<img id='selectedPhoto' src = 'resources/".$_SESSION['selected_id'].".png'/>"; ?></h3>
+            <h3>Select framing for photo: <?php echo "<img id='selectedPhoto' src = 'resources/".$_SESSION['selected_id'].".jpeg'/>"; ?></h3>
             <h1>You've Selected:</h1>
             <h3>Frame: <span id="currentFrame">Select your frame!</span></h3>
             <h3>Mat:  <span id="currentMat">Select a mat!</span> </h3>

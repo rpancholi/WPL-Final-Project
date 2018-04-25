@@ -102,7 +102,7 @@ $totalPrice = $_COOKIE['price'];
         <thead><tr><th>Picture</th><th>Frame</th><th>Mat</th><th>Size</th><th>Quantity</th><th>Total Price</th></tr></thead>";
 
         echo "<tr>";
-        echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".png'/>"."</td>";
+        echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".jpeg'/>"."</td>";
         echo "<td align='center'>".$frame."</td>";
         echo "<td align='center'>".$mat."</td>";
         echo "<td align='center'>".$size."</td>";
