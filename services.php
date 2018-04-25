@@ -15,6 +15,7 @@ if(!isset($_SESSION['sess_username'])) {
     header("location: login.html");
     exit();
 }
+$username = $_SESSION['sess_username'];
 
 // Check connection to event_photo database
 $con=mysqli_connect($host,$user,$pass,$db);

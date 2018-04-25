@@ -103,6 +103,17 @@ else
 	$query_filter = "SELECT DISTINCT event_name FROM photo;";
 $filter_results = mysqli_query ($con,$query_filter);
 
+$tempPhotoQuery = $query_photo;
+$photos = mysqli_query ($con,$tempPhotoQuery);
+while($photo = mysqli_fetch_array($photos)){
+	$deleted = $photo['deleted'];
+	$photo_id = $photo['id'];
+	if(isset($_POST[$photo_id])){
+		$_SESSION['selected_id'] = $photo_id;
+		header('Location: services.php');
+	}
+}
+
 $photos = mysqli_query ($con,$query_photo);
 ?>
 <html>
@@ -131,7 +142,7 @@ $photos = mysqli_query ($con,$query_photo);
     <div class="banner">
         <h1>Photo Framing Services</h1>
         <h1>Frame your heart out</h1>
-        <h3>Look through your photos and choose the ones you like.</h3>
+        <h3>Look through your photos and choose one you like.</h3>
     </div>
 	
 	<form action="" method="post" id="searchForm">
@@ -170,8 +181,12 @@ $photos = mysqli_query ($con,$query_photo);
 			if(!$deleted){
 				$photo_count++;
 				if($photo_count>$page_min && $photo_count <= $page_max){
-					echo"<div class='photo'>";
 					$photo_id = $photo['id'];
+					if(isset($_POST[$photo_id])){
+						$_SESSION['selected_id'] = $photo_id;
+						header('Location: services.php');
+					}
+					echo"<div class='photo'>";
 					echo "<img src = 'resources/$photo_id.png'/>";
 					echo "<h3>ID: $photo_id.</h3>";
 					$photo_name = $photo['event_name'];
@@ -180,10 +195,7 @@ $photos = mysqli_query ($con,$query_photo);
 					echo "<h3>Date: $photo_date</h3>";
 					echo "<label for='$photo_id'>Select Photo: </label>";
 					//check if photo previously checked or not
-					if(isset($_POST[$photo_id])){
-						$_SESSION['selected_id'] = $photo_id;
-						header('Location: services.php');
-					}
+					
 					echo "<input id='selectButton' type='submit' name = '$photo_id' value = 'Select'>";
 					echo "<br>";
 					if($admin){

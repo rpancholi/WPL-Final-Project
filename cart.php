@@ -27,12 +27,41 @@ $userData = mysqli_fetch_array($result);
 $email = $userData['email'];
 
 // Get Cookie Variables
+
+if(!isset($_COOKIE['id'])){
+	header('Location: photos.php#home');
+}
+
 $pictureID =  $_COOKIE['id'];
 $frame = $_COOKIE['frame'];
 $mat = $_COOKIE['mat'];
 $size = $_COOKIE['size'];
 $totalPrice = $_COOKIE['price'];   
 
+if(isset($_POST['checkout'])){ //write it to the DB
+	$date = date("Y/m/d");
+	$quantity = $_POST['quantityInput'];
+	$summary = "INSERT INTO purchase_summary (username, description, purchase_date) VALUES ('$username','Photo: $pictureID(x$quantity), Frame: $frame, Mat: $mat, Size: $size, Total Price: $totalPrice','$date')";
+	if(mysqli_query($con,$summary)){
+		echo "<script type='text/javascript'>alert('Purchased!');</script>";
+		unset($_COOKIE['id']);
+		unset($_COOKIE['frame']);
+		unset($_COOKIE['mat']);
+		unset($_COOKIE['size']);
+		unset($_COOKIE['price']);
+	}
+	else{ //query failed
+		$error = mysqli_error($con);
+		echo "<script type='text/javascript'>alert('Error: $error');</script>";
+	}		
+}
+else if (isset($_POST['delete'])){ //remove from cart
+	unset($_COOKIE['id']);
+	unset($_COOKIE['frame']);
+	unset($_COOKIE['mat']);
+	unset($_COOKIE['size']);
+	unset($_COOKIE['price']);
+}
 ?>
 
 <html>
@@ -66,6 +95,11 @@ $totalPrice = $_COOKIE['price'];
             var newTotalPrice = parseInt(quantityInputField) * parseFloat(orderSubtotal); 
             totalPrice.innerText = "$"+String(newTotalPrice.toFixed(2));
         }
+		
+		function clicked(e)
+		{
+			if(!confirm('Are you sure you want to place this order?'))e.preventDefault();
+		}
     </script>
  
   <body>
@@ -106,19 +140,20 @@ $totalPrice = $_COOKIE['price'];
         echo "<table id='orderConfirmationTable'>
         <caption> Your Order Summary </caption>
         <thead><tr><th>Picture</th><th>Frame</th><th>Mat</th><th>Size</th><th>Quantity</th><th>Total Price</th></tr></thead>";
-
-        echo "<tr>";
-        echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".png'/>"."</td>";
-        echo "<td align='center'>".$frame."</td>";
-        echo "<td align='center'>".$mat."</td>";
-        echo "<td align='center'>".$size."</td>";
-        echo "<td id='quantitySelector' align='center'><input id='quantityInput' type='number' required></td>";
-        echo "<td id='totalPrice' align='center'>".$totalPrice."</td>";
-        echo "</tr>";
-
+		if(isset($_COOKIE['id'])){
+			echo "<tr>";
+			echo "<td align='center'>"."<img id='selectedPhoto' src = 'resources/".$pictureID.".png'/>"."</td>";
+			echo "<td align='center'>".$frame."</td>";
+			echo "<td align='center'>".$mat."</td>";
+			echo "<td align='center'>".$size."</td>";
+			echo "<td id='quantitySelector' align='center'><input name='quantityInput' id='quantityInput' type='number' required></td>";
+			echo "<td id='totalPrice' align='center'>".$totalPrice."</td>";
+			echo "<td id='deleteButton' align='center'><input name='delete' id='delete' type='submit' value='Delete'></td>";
+			echo "</tr>";
+		}
         echo "</table>";
-
-        echo "<button type='button' id='comfrimationButton' onclick=''>Confirm Order!</button>";
+		if(isset($_COOKIE['id']))
+			echo "<input type='submit' id='comfrimationButton' name='checkout' onclick='clicked(event)' value='Confirm Order!'";
     ?>
     </div>
 	</form>

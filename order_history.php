@@ -74,9 +74,6 @@ $history = mysqli_query($con, $query);
             <div class = "user-welcome">
                 <?php echo "Welcome ".ucfirst($_SESSION['sess_username'])."!" ?>
             </div>
-            <div class = "navbar-item">
-                <a href=services.php>Services</a>
-            </div>
 			<div class = "navbar-item">
                 <a href=photos.php#home>View Photos</a>
             </div><aside>

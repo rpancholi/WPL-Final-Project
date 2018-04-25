@@ -42,7 +42,7 @@ DROP TABLE IF EXISTS Purchase_summary;
 CREATE TABLE Purchase_summary (
   username      VARCHAR(30) NOT NULL, 
   purchase_id	int not null AUTO_INCREMENT,
-  description	VARCHAR(30) NOT NULL,
+  description	VARCHAR(255) NOT NULL,
   purchase_date	DATE NOT NULL,
   CONSTRAINT pk_purchase PRIMARY KEY (purchase_id),
   Constraint fk_purchase_customer FOREIGN KEY (username) references Customer(username)
@@ -98,8 +98,6 @@ INSERT INTO photo VALUES ('Tom',11,"Company Party","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false,false);
-
-INSERT INTO purchase_summary(username, description, purchase_date) VALUES ('Tom', 'A4, Gold Frame, No Backing', '2002/06/22');
 
 INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Decorated', 'black_rect_thick', "49.99","100",false);
 INSERT INTO frames(frame_name, image_file_name, price, inventory, deleted) VALUES ('Black Modern', 'black_rect_thin', "14.99","100",false);
