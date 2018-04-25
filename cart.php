@@ -41,6 +41,32 @@ $totalPrice = $_COOKIE['price'];
 if(isset($_POST['checkout'])){ //write it to the DB
     // Get purchase quantity
     $quantity = $_POST['quantityInput'];
+
+    // Check if inventory available
+    // Frame Inventory
+    $getFrameInventoryQuery = "SELECT inventory FROM frames WHERE name = '$frame';";
+    $frameInvResult = mysqli_query($con,$getFrameInventoryQuery);
+    $fRow = mysqli_fetch_array($frameInvResult);
+    $frameInventory = $fRow['inventory'];
+    // Mat Inventory
+    $getMatInventoryQuery = "SELECT inventory FROM mats WHERE name = '$frame';";
+    $matInvResult = mysqli_query($con,$getMatInventoryQuery);
+    $mRow = mysqli_fetch_array($matInvResult);
+    $matInventory = $mRow['inventory'];
+
+
+    // Throw error if inventory not available
+    if($quantity > $frameInventory){
+        echo "<script type='text/javascript'>alert('Error: Not enough inventory of Frame: $frame, Please Select another style!');</script>";
+        header("Refresh:0; url=services.php");
+        die();
+    }
+    if($quantity > $matInventory){
+        echo "<script type='text/javascript'>alert('Error: Not enough inventory of Mat: $mat, Please Select another style!');</script>";
+        header("Refresh:0; url=services.php");
+        die();
+    }
+    
 	
     // Decrement Inventory
     $updateFrameInventoryQuery = "UPDATE frames SET inventory = (inventory - $quantity) WHERE name = '$frame';";
