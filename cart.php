@@ -83,8 +83,8 @@ $totalPrice = $_COOKIE['price'];
         </div>
     </div>
     <div class="banner">
+        <h1>S & R</h1>
         <h1>Photo Framing Services</h1>
-        <h1>Frame your heart out</h1>
     </div>
 	
 	<form action="" method="post" id="checkoutForm">

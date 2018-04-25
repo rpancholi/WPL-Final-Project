@@ -129,8 +129,8 @@ $photos = mysqli_query ($con,$query_photo);
         </div>
     </div>
     <div class="banner">
-        <h1>Photo Framing Services</h1>
-        <h1>Frame your heart out</h1>
+		<h1>S & R</h1>
+        <h1>Event Photography Services</h1>
         <h3>Look through your photos and choose the ones you like.</h3>
     </div>
 	
