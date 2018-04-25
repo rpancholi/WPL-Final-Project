@@ -41,7 +41,7 @@ $totalPrice = $_COOKIE['price'];
 if(isset($_POST['checkout'])){ //write it to the DB
     // Get purchase quantity
     $quantity = $_POST['quantityInput'];
-
+	
     // Decrement Inventory
     $updateFrameInventoryQuery = "UPDATE frames SET inventory = (inventory - $quantity) WHERE frame_name = '$frame';";
     $result = mysqli_query($con,$updateFrameInventoryQuery);
@@ -50,8 +50,8 @@ if(isset($_POST['checkout'])){ //write it to the DB
 
     // Insert Order Summary into database
 	$date = date("Y/m/d");
-
-	$summary = "INSERT INTO purchase_summary (username, description, purchase_date) VALUES ('$username','Photo: $pictureID(x$quantity), Frame: $frame, Mat: $mat, Size: $size, Total Price: $totalPrice','$date')";
+	$price = $_POST['price'];
+	$summary = "INSERT INTO purchase_summary (username, description, purchase_date) VALUES ('$username','Photo: $pictureID(x$quantity), Frame: $frame, Mat: $mat, Size: $size, Total Price: $price','$date')";
 	if(mysqli_query($con,$summary)){
 		echo "<script type='text/javascript'>alert('Purchased!');</script>";
 		unset($_COOKIE['id']);
@@ -99,8 +99,10 @@ else if (isset($_POST['delete'])){ //remove from cart
         function updatePrice(){
             var quantityInputField = document.getElementById("quantityInput").value;
             var totalPrice = document.getElementById("totalPrice");
+			var price = document.getElementById("price");
             var newTotalPrice = parseInt(quantityInputField) * parseFloat(orderSubtotal); 
             totalPrice.innerText = "$"+String(newTotalPrice.toFixed(2));
+			price.value = "$"+String(newTotalPrice.toFixed(2));
         }
 		
 		function clicked(e)
@@ -157,6 +159,7 @@ else if (isset($_POST['delete'])){ //remove from cart
 			echo "<td id='totalPrice' align='center'>".$totalPrice."</td>";
 			echo "<td id='deleteButton' align='center'><input name='delete' id='delete' type='submit' value='Delete'></td>";
 			echo "</tr>";
+			echo "<input id='price' name='price' value='$totalPrice' type='hidden'>";
 		}
         echo "</table>";
 		if(isset($_COOKIE['id']))
