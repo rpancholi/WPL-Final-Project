@@ -79,25 +79,25 @@ CREATE TABLE sizes (
   CONSTRAINT pk_mat PRIMARY KEY (size)
 );
 
--- Insert statements test
-INSERT INTO customer VALUES ('Tom','p1','tom@gmail.com','214-100-1000','1000 N Big Rd, Dallas Tx 75001',true);
-INSERT INTO customer VALUES ('Bill','p2','bill@gmail.com','214-200-2000','2000 N Big Rd, Dallas Tx 75002',false);
-INSERT INTO customer VALUES ('Jerry','p3','jerry@gmail.com','214-300-3000','3000 N Big Rd, Dallas Tx 75003',false);
+-- Insert statements test (password for tom,bill,jerry = potatofarmer)
+INSERT INTO customer VALUES ('Tom','c6bb29b505ae52790d960ff6f4195c84035dfb1ab0942b376be563ff8610ddd5','tom@gmail.com','214-100-1000','1000 N Big Rd, Dallas Tx 75001',true);
+INSERT INTO customer VALUES ('Bill','c6bb29b505ae52790d960ff6f4195c84035dfb1ab0942b376be563ff8610ddd5','bill@gmail.com','214-200-2000','2000 N Big Rd, Dallas Tx 75002',false);
+INSERT INTO customer VALUES ('Jerry','c6bb29b505ae52790d960ff6f4195c84035dfb1ab0942b376be563ff8610ddd5','jerry@gmail.com','214-300-3000','3000 N Big Rd, Dallas Tx 75003',false);
 INSERT INTO customer VALUES ('Fred','ab71fc4c8a1c4d62b9202b36ee7c07dd398a0907a37037bd8c3959d6af573608','fred@gmail.com','214-400-4000','4000 N Big Rd, Dallas Tx 75004',false);
 INSERT INTO customer VALUES ('admin','d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892','admin@gmail.com','214-100-1000','1000 N Admin Rd, Dallas Tx 75001',true);
 
 
 INSERT INTO photo VALUES ('Tom',1,"Birthday","2001/04/10",false,false);
-INSERT INTO photo VALUES ('Tom',5,"Company Party","2002/06/22",false,false);
-INSERT INTO photo VALUES ('Tom',6,"Dance","2002/06/22",false,false);
-INSERT INTO photo VALUES ('Tom',7,"Food Competition","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',5,"Company Party","2003/06/22",false,false);
+INSERT INTO photo VALUES ('Tom',6,"Dance","2004/01/22",false,false);
+INSERT INTO photo VALUES ('Tom',7,"Food Competition","2005/06/20",false,false);
 INSERT INTO photo VALUES ('Tom',8,"Birthday","2001/04/10",false,false);
 INSERT INTO photo VALUES ('Tom',9,"Company Party","2002/06/22",false,false);
 INSERT INTO photo VALUES ('Tom',10,"Birthday","2001/04/10",false,false);
 INSERT INTO photo VALUES ('Tom',11,"Company Party","2002/06/22",false,false);
-INSERT INTO photo VALUES ('Bill',2,"Birthday","2002/06/22",false,false);
-INSERT INTO photo VALUES ('Jerry',3,"Birthday","2002/06/22",false,false);
-INSERT INTO photo VALUES ('Fred',4,"Birthday","2002/06/22",false,false);
+INSERT INTO photo VALUES ('Bill',2,"Birthday","2006/06/21",false,false);
+INSERT INTO photo VALUES ('Jerry',3,"Birthday","2009/02/22",false,false);
+INSERT INTO photo VALUES ('Fred',4,"Birthday","2005/10/22",false,false);
 
 INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Decorated', 'black_rect_thick', "49.99","100",false);
 INSERT INTO frames(name, image_file_name, price, inventory, deleted) VALUES ('Black Modern', 'black_rect_thin', "14.99","100",false);
