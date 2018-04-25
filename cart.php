@@ -43,12 +43,6 @@ $totalPrice = $_COOKIE['price'];
     </head>
 
     <script>
-        // var pictureID = <?php $_COOKIE['id'] ?>;
-        // var frame = <?php $_COOKIE['frame'] ?>;
-        // var mat = <?php $_COOKIE['mat'] ?>;
-        // var size = <?php $_COOKIE['size'] ?>;
-        // var price = <?php $_COOKIE['price'] ?>;
-
         var orderSubtotal = null;
 
         window.onload = function() {
@@ -102,7 +96,7 @@ $totalPrice = $_COOKIE['price'];
 	<div class="main">
     <h2>Shopping Cart</h2>
     
-    <?php //display the photos from the session variable
+    <?php
         echo "<table id='orderConfirmationTable'>
         <caption> Your Order Summary </caption>
         <thead><tr><th>Picture</th><th>Frame</th><th>Mat</th><th>Size</th><th>Quantity</th><th>Total Price</th></tr></thead>";
