@@ -49,7 +49,7 @@ if(isset($_POST['checkout'])){ //write it to the DB
     $fRow = mysqli_fetch_array($frameInvResult);
     $frameInventory = $fRow['inventory'];
     // Mat Inventory
-    $getMatInventoryQuery = "SELECT inventory FROM mats WHERE name = '$frame';";
+    $getMatInventoryQuery = "SELECT inventory FROM mats WHERE name = '$mat';";
     $matInvResult = mysqli_query($con,$getMatInventoryQuery);
     $mRow = mysqli_fetch_array($matInvResult);
     $matInventory = $mRow['inventory'];
