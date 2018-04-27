@@ -5,8 +5,8 @@ session_start();
 // Database Connection Variables
 $host = "localhost";
 $port = 3306;
-$user = "Solon"; 
-$pass = "speakeasy";
+$user = "root"; 
+$pass = "root";
 $db = "event_photo";
 
 

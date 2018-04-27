@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	}
 	else //all fields non-empty
 	{
-		$con=mysqli_connect("localhost","Solon","speakeasy","event_photo");
+		$con=mysqli_connect("localhost","root","root","event_photo");
 		if (!$con) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
